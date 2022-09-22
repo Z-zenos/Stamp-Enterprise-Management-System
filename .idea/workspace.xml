@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="" />
+    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/quanlitem/QuanLiTemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/manage-stamp/QuanLiTemApplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +26,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System",
+    "last_opened_file_path": "E:/Documents/JAVA/SPRING_BOOT/Stamp-Enterprise-Management-System",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -42,6 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663832726809</updated>
       <workItem from="1663832727969" duration="937000" />
+      <workItem from="1663836755701" duration="846000" />
     </task>
     <servers />
   </component>
