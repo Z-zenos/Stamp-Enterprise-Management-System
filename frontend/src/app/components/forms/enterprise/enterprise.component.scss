@@ -1,0 +1,76 @@
+@import "src/styles";
+
+.form-ep {
+  width: 70rem;
+  height: 80rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 100rem rgba($color-black, .5);
+  background-color: $color-white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &__header {
+    height: 6.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-gray;
+    padding: 1rem 2rem;
+  }
+
+  &__title {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+
+  &__main {
+    padding: 4rem 0;
+    width: 100%;
+    margin: 0 4rem;
+  }
+
+  &__footer {
+    height: 6.4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid $color-gray;
+
+    & > * {
+      margin-right: 2rem;
+    }
+  }
+
+  &__close {
+    padding: .8rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-red-tertiary;
+      color: $color-red-secondary;
+    }
+  }
+}
+
+[nz-form] {
+  max-width: 100%;
+  text-align: center;
+}
+
+nz-date-picker ::ng-deep .ant-calendar-picker {
+  width: 100%;
+}
+
+nz-date-picker,
+nz-time-picker {
+  width: 100%;
+}
+
+nz-form-label {
+  font-weight: 600;
+}

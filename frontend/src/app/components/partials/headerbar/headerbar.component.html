@@ -1,0 +1,16 @@
+<div class="headerbar">
+  <button nz-button nzType="primary" (click)="toggleCollapsed()">
+    <span nz-icon [nzType]="isCollapsed ? 'right-square' : 'left-square'"></span>
+  </button>
+  <div class="headerbar__menu">
+    <div class="notification">
+      <span nz-icon nzType="bell"></span>
+      <div class="notification__number">99+</div>
+    </div>
+    <div class="headerbar__user">
+      <img src="assets/images/icheck__logo.png" alt="">
+      <span class="headerbar__user__name">iCheck</span>
+      <span class="headerbar__user__icon" nz-icon nzType="caret-down"></span>
+    </div>
+  </div>
+</div>

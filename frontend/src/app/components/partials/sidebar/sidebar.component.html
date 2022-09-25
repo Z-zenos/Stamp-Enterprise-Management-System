@@ -1,0 +1,46 @@
+<div class="sidebar">
+  <ul
+    nz-menu
+    nzMode="inline"
+    nzTheme="dark"
+    [nzInlineCollapsed]="isCollapsed"
+    class="sidebar__list"
+  >
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'iCheck' : ''"
+    >
+      <div [ngClass]="isCollapsed ? 'sidebar__logo--img' : 'sidebar__logo--text'"></div>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Doanh nghiệp' : ''"
+      nzSelected
+    >
+      <span nz-icon nzType="mail"></span>
+      <span>Doanh nghiệp</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Tem' : ''"
+    >
+      <span nz-icon nzType="barcode" nzTheme="outline"></span>
+      <span>Tem</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Gói dịch vụ' : ''"
+    >
+      <span nz-icon nzType="inbox" nzTheme="outline"></span>
+      <span>Gói dịch vụ</span>
+    </li>
+  </ul>
+</div>

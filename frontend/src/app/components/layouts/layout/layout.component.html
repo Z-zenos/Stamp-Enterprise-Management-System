@@ -1,0 +1,17 @@
+<nz-layout>
+  <nz-sider [(nzCollapsed)]="isCollapsed">
+    <app-sidebar [isCollapsed]="isCollapsed"></app-sidebar>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header>
+      <app-headerbar [isCollapsed]="isCollapsed" (collapsedEvent)="toggleCollapsed($event)">
+      </app-headerbar>
+    </nz-header>
+
+    <nz-content>
+<!--      <app-table></app-table>-->
+      <ic-form-enterprise></ic-form-enterprise>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

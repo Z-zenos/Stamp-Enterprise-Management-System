@@ -1,0 +1,55 @@
+<app-button
+  [icon]="'plus'"
+  [title]="'Thêm mới'"
+  [bgColor]="'green'"
+  (click)="addRow()"
+>
+</app-button>
+<nz-table
+  class="table"
+  #editRowTable
+  nzBordered
+  [nzData]="enterprises"
+  [nzScroll]="{ x: '1100px' }"
+  [nzPageSize]="8"
+  [nzPaginationType]="'small'"
+>
+  <thead>
+    <tr>
+      <th [nzWidth]="'8rem'">ID</th>
+      <th>Tên doanh nghiệp</th>
+      <th>Địa chỉ</th>
+      <th>Mã số thuế</th>
+      <th>Tỉnh / Thành phố</th>
+      <th>Quận / huyện</th>
+      <th>Điện thoại</th>
+      <th>Email</th>
+      <th [nzWidth]="'12rem'">Ngày tạo</th>
+      <th [nzWidth]="'12rem'">Trạng thái</th>
+      <th nzRight [nzWidth]="'8rem'">Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of editRowTable.data" class="editable-row">
+      <td class="center">{{ data.id * 10000 }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.address }}</td>
+      <td class="center">{{ data.taxcode }}</td>
+      <td class="center">{{ data.city }}</td>
+      <td class="center">{{ data.district }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.email }}</td>
+      <td class="center">{{ data.createdAt | date }}</td>
+      <td class="center">
+        <app-badge
+          [bgColor]="data.status ? 'green' : 'red'"
+          [title]="data.status ? 'active' : 'inactive'"
+        >
+        </app-badge>
+      </td>
+      <td nzRight class="center">
+        <app-button [icon]="'caret-down'" [bgColor]="'green'"></app-button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

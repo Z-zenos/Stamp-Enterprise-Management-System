@@ -1,0 +1,108 @@
+<div class="form-ep">
+  <div class="form-ep__header">
+    <span class="form-ep__title">Thêm doanh nghiệp mới</span>
+<!--    <span class="form-ep__close" nz-icon nzType="close"></span>-->
+    <app-button [icon]="'close'" [bgColor]="'red'"></app-button>
+  </div>
+
+  <div class="form-ep__main">
+    <form nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Tên công ty</nz-form-label>
+        <nz-form-control
+          nzValidateStatus="error"
+          [nzSpan]="14"
+          nzErrorTip="Should be combination of numbers & alphabets"
+        >
+          <input nz-input [ngModel]="'unavailable choice'" name="errorValid" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Mã số thuế</nz-form-label>
+        <nz-form-control nzValidateStatus="warning" [nzSpan]="14">
+          <input nz-input [ngModel]="'Warning'" name="warningValid" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Địa chỉ</nz-form-label>
+        <nz-form-control
+          [nzSpan]="14"
+          nzValidateStatus="validating"
+          nzHasFeedback
+          nzValidatingTip="I'm validating the content"
+        >
+          <input nz-input [ngModel]="'The content is being validated'" name="validating" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Số điện thoại</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzValidateStatus="success" nzHasFeedback>
+          <input nz-input [ngModel]="'The content'" name="successValid" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Email</nz-form-label>
+        <nz-form-control
+          [nzSpan]="14"
+          nzValidateStatus="warning"
+          nzHasFeedback
+          nzWarningTip="Should be combination of numbers & alphabets"
+        >
+          <input nz-input [ngModel]="'Warning'" name="warningHighValid" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Tỉnh / Thành phố</nz-form-label>
+        <nz-form-control
+          [nzSpan]="14"
+          nzValidateStatus="error"
+          nzHasFeedback
+          nzErrorTip="Should be combination of numbers & alphabets"
+        >
+          <input nz-input [ngModel]="'unavailable choice'" name="invalidValid" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Quận / Huyện</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzValidateStatus="success" nzHasFeedback>
+          <nz-date-picker name="date-picker-success"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Mật khẩu</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzValidateStatus="warning" nzHasFeedback>
+          <nz-time-picker name="time-picker-warning"></nz-time-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Nhập lại mật khẩu</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzValidateStatus="error" nzHasFeedback>
+          <nz-select name="select-error" [ngModel]="'Option 1'">
+            <nz-option nzValue="Option 1" nzLabel="Option 1"></nz-option>
+            <nz-option nzValue="Option 2" nzLabel="Option 2"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5">Trạng thái</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzValidateStatus="success" nzHasFeedback>
+          <nz-input-number name="inputnumber-success" style="width:100%"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+
+  <div class="form-ep__footer">
+    <app-button [icon]="'close'" [title]="'Hủy'" [bgColor]="'red'"></app-button>
+    <app-button [icon]="'plus'" [title]="'Thêm mới'" [bgColor]="'green'"></app-button>
+  </div>
+</div>
