@@ -1,0 +1,18 @@
+@import "src/styles";
+
+.badge {
+  width: 8rem;
+  border-radius: 3rem;
+  font-weight: 500;
+  margin: 0 auto;
+
+  &--green {
+    background-color: $color-green-tertiary;
+    color: $color-green-secondary
+  }
+
+  &--red {
+    background-color: $color-red-tertiary;
+    color: $color-red-secondary
+  }
+}
