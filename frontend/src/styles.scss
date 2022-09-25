@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* ======= BASE ======= */
+
+* {
+  transition: all .3s ease;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ======= COLOR ======= */
+$color-indigo-primary: #0B1E52;
+$color-indigo-secondary: #152F78;
+$color-indigo-tertiary: #5B65EA;
+
+$color-white: #FFF;
+$color-black: #000;
+$color-gray: #CCC;
+
+$color-red-primary: #FF0033;
+$color-red-secondary: #FF0036;
+$color-red-tertiary: #FFE5E7;
+
+$color-green-primary: #5EBF8B;
+$color-green-secondary: #01ad60;
+$color-green-tertiary: #D6FCEE;
+
+
+
+/* ======= UTILS ======= */
+.center {
+  text-align: center;
+}
