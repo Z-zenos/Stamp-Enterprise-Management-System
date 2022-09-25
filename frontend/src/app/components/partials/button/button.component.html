@@ -1,0 +1,12 @@
+<button [className]="'btn btn--' + bgColor">
+  <span
+    *ngIf="icon"
+    nz-icon
+    [nzType]="icon"
+    [ngStyle]="{
+      'margin-right': title ? '.5rem' : '0'
+    }"
+  >
+  </span>
+  <span *ngIf="title" >{{ title }}</span>
+</button>

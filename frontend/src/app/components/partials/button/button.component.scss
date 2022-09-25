@@ -1,0 +1,27 @@
+@import "src/styles";
+
+/* ======= BUTTON ======= */
+.btn {
+  padding: .5rem 1rem;
+  font-size: 1.4rem;
+  border: none;
+  outline: none;
+  border-radius: .8rem;
+  cursor: pointer;
+  opacity: .9;
+  font-weight: 600;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &--green {
+    background-color: $color-green-tertiary;
+    color: $color-green-secondary;
+  }
+
+  &--red {
+    background-color: $color-red-tertiary;
+    color: $color-red-secondary;
+  }
+}
