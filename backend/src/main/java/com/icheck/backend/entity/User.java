@@ -3,6 +3,8 @@ package com.icheck.backend.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -44,9 +46,11 @@ public class User {
     @Column
     private int status;
 
-    @Column
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime created_at;
 
     @Column
+    @UpdateTimestamp
     private LocalDateTime update_at;
 }

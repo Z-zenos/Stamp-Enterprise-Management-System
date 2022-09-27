@@ -3,6 +3,7 @@ package com.icheck.backend.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,7 +24,8 @@ public class Stamp {
     @Column
     private Long userId;
 
-    @Column
+    @Column(updatable = false)
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Column

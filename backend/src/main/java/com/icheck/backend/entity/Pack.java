@@ -3,6 +3,7 @@ package com.icheck.backend.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,8 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "package_service")
-public class PackageService {
+@Table(name = "pack")
+public class Pack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,10 +30,11 @@ public class PackageService {
     @Column
     private double price;
 
-    @Column
-    private LocalDateTime created_at;
+    @Column(updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
-    @Column
+    @Column()
     private int status;
 
 }
