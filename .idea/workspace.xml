@@ -5,35 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_oauth2_resource_server_2_7_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_oauth2_resource_server_5_7_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/PackConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/filters/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/AuthenticateRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/PackRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/AuthenticateResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/PackResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/PacksResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/security/MyUserDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/security/SecurityConfigurer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/util/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_modelmapper_modelmapper_3_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/UserConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/UserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/UsersResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/util/ModelMapperConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/PackageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/Pack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/Stamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/Stamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/UserPackage.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/UserPackage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/PackConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/PackConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +33,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -144,7 +135,8 @@
       <workItem from="1663836755701" duration="4538000" />
       <workItem from="1663899977407" duration="10247000" />
       <workItem from="1664158121657" duration="21069000" />
-      <workItem from="1664245299765" duration="15710000" />
+      <workItem from="1664245299765" duration="17086000" />
+      <workItem from="1664330564757" duration="17936000" />
     </task>
     <servers />
   </component>
