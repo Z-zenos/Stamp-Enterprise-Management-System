@@ -6,11 +6,18 @@
   font-size: 1.4rem;
   border: none;
   outline: none;
+<<<<<<< HEAD
   border-radius: .4rem;
   cursor: pointer;
   opacity: .9;
   font-weight: 600;
   transition: all .3s ease;
+=======
+  border-radius: .8rem;
+  cursor: pointer;
+  opacity: .9;
+  font-weight: 600;
+>>>>>>> 8c4af7ad011904e96dbddc69e780f99e936a5ec9
 
   &:hover {
     opacity: 1;
@@ -19,16 +26,20 @@
   &--green {
     background-color: $color-green-tertiary;
     color: $color-green-secondary;
+<<<<<<< HEAD
     border: 1px solid $color-green-tertiary;
 
     &:hover {
       border: 1px solid $color-green-secondary;
     }
+=======
+>>>>>>> 8c4af7ad011904e96dbddc69e780f99e936a5ec9
   }
 
   &--red {
     background-color: $color-red-tertiary;
     color: $color-red-secondary;
+<<<<<<< HEAD
     border: 1px solid $color-red-tertiary;
 
     &:hover {
@@ -54,5 +65,7 @@
     &:hover {
       border: 1px solid $color-blue-secondary;
     }
+=======
+>>>>>>> 8c4af7ad011904e96dbddc69e780f99e936a5ec9
   }
 }

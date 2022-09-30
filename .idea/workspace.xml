@@ -4,63 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="Set base of project">
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/package-form/package-form.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/package-form/package-form.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/package-form/package-form.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/pages/enterprise-page/enterprise-page.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/pages/enterprise-page/enterprise-page.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/pages/enterprise-page/enterprise-page.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/pages/package-page/package-page.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/pages/package-page/package-page.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/pages/package-page/package-page.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/box-search.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/enterprise-box-search/enterprise-box-search.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/enterprise-box-search/enterprise-box-search.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/enterprise-box-search/enterprise-box-search.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/package-box-search/package-box-search.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/package-box-search/package-box-search.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/box-search/package-box-search/package-box-search.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/select-city-district/select-city-district.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/select-city-district/select-city-district.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/select-city-district/select-city-district.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/submenu/submenu.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/submenu/submenu.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/submenu/submenu.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/enterprise-table/enterprise-table.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/enterprise-table/enterprise-table.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/enterprise-table/enterprise-table.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/package-table/package-table.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/package-table/package-table.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/package-table/package-table.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/package.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/search.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/validation.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/headerbar/headerbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/headerbar/headerbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/table/table.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/table/table.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/tables/tables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/table/table.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/models/package_service.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/models/package_service.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/enterprise.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/enterprise.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
-    </list>
+    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,41 +13,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectId" id="2F7APiCii7ScL6OGpT1gjOWnCVg" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/src/assets/images" />
-    </key>
-  </component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -112,71 +41,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663832726809</updated>
-      <workItem from="1663832727969" duration="5171000" />
-      <workItem from="1663840284692" duration="2883000" />
-      <workItem from="1663859837306" duration="1766000" />
-      <workItem from="1663915297784" duration="13296000" />
-      <workItem from="1663942160906" duration="15409000" />
-      <workItem from="1663994982345" duration="24599000" />
-      <workItem from="1664088644330" duration="737000" />
-      <workItem from="1664158581358" duration="26392000" />
-      <workItem from="1664198979354" duration="35000" />
-      <workItem from="1664249077860" duration="19811000" />
-      <workItem from="1664287586604" duration="1737000" />
-      <workItem from="1664333848646" duration="19012000" />
-      <workItem from="1664372814445" duration="16000" />
-      <workItem from="1664417601517" duration="8243000" />
-      <workItem from="1664429707830" duration="4535000" />
-      <workItem from="1664436811195" duration="10346000" />
-      <workItem from="1664458334351" duration="6708000" />
-      <workItem from="1664504221081" duration="2863000" />
-      <workItem from="1664511644088" duration="3795000" />
-      <workItem from="1664520691916" duration="6796000" />
-      <workItem from="1664561442954" duration="687000" />
+      <workItem from="1663832727969" duration="937000" />
     </task>
-    <task id="LOCAL-00001" summary="Create badge component">
-      <created>1664088674583</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088674584</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Create button component">
-      <created>1664088692548</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088692548</updated>
-    </task>
-    <task id="LOCAL-00003" summary=".">
-      <created>1664088736753</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088736753</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Create user(enterprise) model">
-      <created>1664088756543</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088756543</updated>
-    </task>
-    <task id="LOCAL-00005" summary=".">
-      <created>1664088953476</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088953476</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Set base of project">
-      <created>1664089002023</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1664089002023</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,14 +58,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Create badge component" />
-    <MESSAGE value="Create button component" />
-    <MESSAGE value="Create user(enterprise) model" />
-    <MESSAGE value="." />
-    <MESSAGE value="Set base of project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set base of project" />
   </component>
 </project>
