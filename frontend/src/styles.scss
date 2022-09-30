@@ -2,7 +2,7 @@
 /* ======= BASE ======= */
 
 * {
-  transition: all .3s ease;
+  transition: all .2s ease;
 }
 
 html {
@@ -20,8 +20,8 @@ a {
 }
 
 /* ======= COLOR ======= */
-$color-indigo-primary: #0B1E52;
-$color-indigo-secondary: #152F78;
+$color-indigo-primary: #030852;
+$color-indigo-secondary: #061178;
 $color-indigo-tertiary: #5B65EA;
 
 $color-white: #FFF;
@@ -36,6 +36,12 @@ $color-green-primary: #5EBF8B;
 $color-green-secondary: #01ad60;
 $color-green-tertiary: #D6FCEE;
 
+//$color-blue-primary: #5EBF8B;
+$color-blue-secondary: #00b2d5;
+$color-blue-tertiary: #daf7fb;
+
+$color-yellow-secondary: #d29b00;
+$color-yellow-tertiary: #f7ffca;
 
 
 /* ======= UTILS ======= */

@@ -7,3 +7,15 @@ nz-layout {
 nz-header {
   background: $color-white;
 }
+
+::ng-deep {
+  .ant-layout {
+    background: $color-white;
+  }
+
+  .ant-input-prefix {
+    margin-right: .6rem;
+    border-right: 1px solid $color-gray;
+    padding-right: .8rem;
+  }
+}

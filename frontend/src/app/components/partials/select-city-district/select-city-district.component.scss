@@ -1,0 +1,13 @@
+@import "src/styles";
+
+.select {
+  width: 41rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+}
+
+nz-select {
+  width: 20rem;
+
+}

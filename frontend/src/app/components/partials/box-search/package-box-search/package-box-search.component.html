@@ -1,0 +1,36 @@
+<div class="box-search">
+  <form [formGroup]="packageForm">
+    <nz-input-group nzPrefixIcon="inbox">
+      <input
+        nz-input
+        placeholder="Tên gói"
+        type="text"
+        formControlName="name"
+      />
+    </nz-input-group>
+
+    <nz-input-group nzPrefixIcon=field-number>
+      <input
+        nz-input
+        placeholder="Code"
+        type="text"
+        formControlName="code"
+
+      />
+    </nz-input-group>
+
+    <nz-select nzPlaceHolder="-- Trạng thái --"         formControlName="status" nzAllowClear
+    >
+      <nz-option nzValue="1" nzLabel="active"></nz-option>
+      <nz-option nzValue="0" nzLabel="inactive"></nz-option>
+    </nz-select>
+  </form>
+</div>
+<ic-button
+  [icon]="'search'"
+  [title]="'Tìm kiếm'"
+  [bgColor]="'blue'"
+  (click)="searchService.search(packageForm, 'packages')"
+>
+</ic-button>
+<ic-button [icon]="'redo'" [title]="'Reset'" [bgColor]="'yellow'" (click)="onReset()"></ic-button>

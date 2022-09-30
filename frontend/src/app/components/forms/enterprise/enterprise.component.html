@@ -1,108 +1,113 @@
-<div class="form-ep">
-  <div class="form-ep__header">
-    <span class="form-ep__title">Thêm doanh nghiệp mới</span>
-<!--    <span class="form-ep__close" nz-icon nzType="close"></span>-->
-    <app-button [icon]="'close'" [bgColor]="'red'"></app-button>
-  </div>
+<div class="ic-form ic-form-ep">
 
-  <div class="form-ep__main">
-    <form nz-form>
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Tên công ty</nz-form-label>
-        <nz-form-control
-          nzValidateStatus="error"
-          [nzSpan]="14"
-          nzErrorTip="Should be combination of numbers & alphabets"
-        >
-          <input nz-input [ngModel]="'unavailable choice'" name="errorValid" />
-        </nz-form-control>
-      </nz-form-item>
+    <div class="ic-form__header">
+      <span class="ic-form__title">Thêm doanh nghiệp mới</span>
+      <ic-button [icon]="'close'" [bgColor]="'red'" (click)="hide()"></ic-button>
+    </div>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Mã số thuế</nz-form-label>
-        <nz-form-control nzValidateStatus="warning" [nzSpan]="14">
-          <input nz-input [ngModel]="'Warning'" name="warningValid" />
-        </nz-form-control>
-      </nz-form-item>
+    <div class="ic-form__main">
+      <form
+        nz-form
+        [nzAutoTips]="errors"
+        [formGroup]="enterpriseForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>
+            Tên doanh nghiệp
+          </nz-form-label>
+          <nz-form-control nzHasFeedback [nzSpan]="14"
+          >
+            <nz-input-group nzPrefixIcon="solution">
+              <input nz-input placeholder="Công ty TNHH ABC..." type="text" formControlName="name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Địa chỉ</nz-form-label>
-        <nz-form-control
-          [nzSpan]="14"
-          nzValidateStatus="validating"
-          nzHasFeedback
-          nzValidatingTip="I'm validating the content"
-        >
-          <input nz-input [ngModel]="'The content is being validated'" name="validating" />
-        </nz-form-control>
-      </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Số điện thoại</nz-form-label>
-        <nz-form-control [nzSpan]="14" nzValidateStatus="success" nzHasFeedback>
-          <input nz-input [ngModel]="'The content'" name="successValid" />
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Mã số thuế</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="audit">
+              <input nz-input placeholder="3500806643" formControlName="taxcode" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Email</nz-form-label>
-        <nz-form-control
-          [nzSpan]="14"
-          nzValidateStatus="warning"
-          nzHasFeedback
-          nzWarningTip="Should be combination of numbers & alphabets"
-        >
-          <input nz-input [ngModel]="'Warning'" name="warningHighValid" />
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Địa chỉ</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="home">
+              <input nz-input placeholder="Số 1, Ngõ 1, Đường abc, Đống Đa, Hà Nội" formControlName="address" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Tỉnh / Thành phố</nz-form-label>
-        <nz-form-control
-          [nzSpan]="14"
-          nzValidateStatus="error"
-          nzHasFeedback
-          nzErrorTip="Should be combination of numbers & alphabets"
-        >
-          <input nz-input [ngModel]="'unavailable choice'" name="invalidValid" />
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Số điện thoại</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="phone">
+              <input nz-input placeholder="0123456789" formControlName="phone"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Quận / Huyện</nz-form-label>
-        <nz-form-control [nzSpan]="14" nzValidateStatus="success" nzHasFeedback>
-          <nz-date-picker name="date-picker-success"></nz-date-picker>
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Email</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="mail">
+              <input nz-input formControlName="email" placeholder="abc@gmail.com" type="email" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Mật khẩu</nz-form-label>
-        <nz-form-control [nzSpan]="14" nzValidateStatus="warning" nzHasFeedback>
-          <nz-time-picker name="time-picker-warning"></nz-time-picker>
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Tỉnh / Thành phố</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <input nz-input placeholder="Quảng Ninh" formControlName="city" />
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Nhập lại mật khẩu</nz-form-label>
-        <nz-form-control [nzSpan]="14" nzValidateStatus="error" nzHasFeedback>
-          <nz-select name="select-error" [ngModel]="'Option 1'">
-            <nz-option nzValue="Option 1" nzLabel="Option 1"></nz-option>
-            <nz-option nzValue="Option 2" nzLabel="Option 2"></nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Quận / Huyện</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <input nz-input placeholder="Quận Hoàn Kiếm" formControlName="district" >
+          </nz-form-control>
+        </nz-form-item>
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="5">Trạng thái</nz-form-label>
-        <nz-form-control [nzSpan]="14" nzValidateStatus="success" nzHasFeedback>
-          <nz-input-number name="inputnumber-success" style="width:100%"></nz-input-number>
-        </nz-form-control>
-      </nz-form-item>
-    </form>
-  </div>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Mật khẩu</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="lock">
+              <input nz-input placeholder="Abc1234@" formControlName="password" type="password" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
 
-  <div class="form-ep__footer">
-    <app-button [icon]="'close'" [title]="'Hủy'" [bgColor]="'red'"></app-button>
-    <app-button [icon]="'plus'" [title]="'Thêm mới'" [bgColor]="'green'"></app-button>
-  </div>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Nhập lại mật khẩu</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback nzDisableAutoTips [nzErrorTip]="passwordErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+              <input nz-input placeholder="Abc1234@" formControlName="confirmPassword" type="password" />
+            </nz-input-group>
+            <ng-template #passwordErrorTpl let-control>
+              <ng-container *ngIf="control['hasError']('required')">
+                Vui lòng xác nhận mật khẩu!
+              </ng-container>
+              <ng-container *ngIf="control['hasError']('matching')">
+                Mật khẩu không trùng khớp!
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+      </form>
+    </div>
+
+    <div class="ic-form__footer">
+      <ic-button [icon]="'close'" [title]="'Hủy'" [bgColor]="'red'" (click)="hide()"></ic-button>
+      <ic-button [icon]="'redo'" [title]="'Reset'" [bgColor]="'yellow'" (click)="onReset($event)"></ic-button>
+      <ic-button [icon]="'plus'" [title]="'Thêm mới'" [bgColor]="'green'" [type]="'submit'" (click)="onSubmit()"></ic-button>
+    </div>
+
 </div>

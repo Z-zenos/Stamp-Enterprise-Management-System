@@ -1,4 +1,11 @@
-<button [className]="'btn btn--' + bgColor">
+<button
+  [className]="'btn btn--' + bgColor"
+  [type]="type"
+  [disabled]="disabled"
+  [ngStyle]="{
+    margin: margin
+  }"
+>
   <span
     *ngIf="icon"
     nz-icon
