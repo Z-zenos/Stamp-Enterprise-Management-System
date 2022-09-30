@@ -1,0 +1,76 @@
+@import "src/styles";
+
+form {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+  background-color: #f7f7f7;
+  padding-bottom: 2rem;
+
+  & > * {
+    margin: 10px 0 0 10px;
+  }
+
+  nz-select {
+    margin-left: 0;
+  }
+}
+
+nz-input-group, nz-select, nz-date-picker {
+  width: 20rem;
+}
+
+nz-range-picker {
+  width: 41rem;
+
+  input {
+    text-align: center;
+  }
+}
+
+::ng-deep {
+  .ant-picker-input > input {
+    text-align: center;
+  }
+
+  .ant-input-affix-wrapper:focus,
+  .ant-input-affix-wrapper-focused,
+  .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector,
+  .ant-picker-focused
+  {
+    border-color: $color-indigo-secondary;
+    box-shadow: 0 0 0 2px rgba($color-indigo-secondary, .3);
+    border-right-width: 1px;
+    outline: 0;
+  }
+
+  .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover,
+  .ant-select:not(.ant-select-disabled):hover .ant-select-selector,
+  .ant-picker:hover, {
+    border-color: $color-indigo-secondary;
+    border-right-width: 1px;
+    z-index: 1;
+  }
+}
+
+.slider {
+  width: 50%;
+}
+
+.slider-container {
+  margin-bottom: 16px;
+}
+
+.grid-config {
+  height: 120px;
+  font-size: 14px;
+  line-height: 120px;
+  background: #0092ff;
+  border-radius: 4px;
+}
+
+ic-button {
+  margin-left: 10px;
+}

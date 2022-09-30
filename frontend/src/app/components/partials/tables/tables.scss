@@ -22,6 +22,11 @@
     text-align: center;
     font-weight: 600;
   }
+
+}
+
+nz-table {
+  margin-top: 2rem;
 }
 
 ::ng-deep {
@@ -29,6 +34,16 @@
     font-size: 1.3rem;
     margin: 1rem;
   }
+
+  .cdk-overlay-container, .cdk-overlay-container *
+  {
+    transition: none;
+  }
+
+}
+
+ic-button {
+  margin-left: 10px;
 }
 
 

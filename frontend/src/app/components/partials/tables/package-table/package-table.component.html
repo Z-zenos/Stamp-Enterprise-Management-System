@@ -1,0 +1,42 @@
+<nz-table
+  class="table"
+  #editRowTable
+  nzBordered
+  [nzData]="packages"
+  [nzScroll]="{ x: '1100px' }"
+  [nzPageSize]="8"
+  [nzPaginationType]="'small'"
+>
+  <thead>
+  <tr>
+    <th [nzWidth]="'8rem'">ID</th>
+    <th>Tên gói</th>
+    <th>Code</th>
+    <th>Số lượng</th>
+    <th>Giá</th>
+    <th [nzWidth]="'12rem'">Ngày tạo</th>
+    <th [nzWidth]="'12rem'">Trạng thái</th>
+    <th nzRight [nzWidth]="'8rem'">Hành động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of editRowTable.data" class="editable-row">
+    <td class="center">{{ data.id * 10000 }}</td>
+    <td>{{ data.name }}</td>
+    <td>{{ data.code }}</td>
+    <td class="center">{{ data.quantity }}</td>
+    <td class="center">{{ data.price | currency }}</td>
+    <td class="center">{{ data.createdAt | date }}</td>
+    <td class="center">
+      <app-badge
+        [bgColor]="data.status ? 'green' : 'red'"
+        [title]="data.status ? 'active' : 'inactive'"
+      >
+      </app-badge>
+    </td>
+    <td nzRight class="center">
+      <ic-button [icon]="'caret-down'" [bgColor]="'green'"></ic-button>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>

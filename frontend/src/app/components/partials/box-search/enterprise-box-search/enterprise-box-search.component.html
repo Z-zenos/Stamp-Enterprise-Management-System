@@ -1,0 +1,60 @@
+<div class="box-search">
+  <form [formGroup]="enterpriseForm">
+    <nz-input-group nzPrefixIcon="solution">
+      <input
+        nz-input
+        placeholder="Tên doanh nghiệp"
+        type="text"
+        formControlName="name"
+      />
+    </nz-input-group>
+
+    <nz-input-group nzPrefixIcon=phone>
+      <input
+        nz-input
+        placeholder="Số điện thoại"
+        type="text"
+        formControlName="phone"
+      />
+    </nz-input-group>
+
+    <nz-input-group nzPrefixIcon="audit">
+      <input
+        nz-input
+        placeholder="Mã số thuế"
+        type="text"
+        formControlName="taxcode"
+      />
+    </nz-input-group>
+
+    <nz-input-group nzPrefixIcon="home">
+      <input
+        nz-input
+        placeholder="Địa chỉ"
+        type="text"
+        formControlName="address"
+      />
+    </nz-input-group>
+
+    <ic-select-city-district [form]="enterpriseForm"></ic-select-city-district>
+
+    <!--
+      <nz-range-picker [nzPlaceHolder]="['Ngày tạo từ', 'Ngày tạo đến']"></nz-range-picker>
+    -->
+    <nz-date-picker nzPlaceHolder="Ngày tạo từ" formControlName="createdAt"></nz-date-picker>
+    <br />
+
+    <nz-select nzPlaceHolder="-- Trạng thái --" formControlName="status" nzAllowClear>
+      <nz-option nzValue="1" nzLabel="active"></nz-option>
+      <nz-option nzValue="0" nzLabel="inactive"></nz-option>
+    </nz-select>
+  </form>
+</div>
+<ic-button
+  [icon]="'search'"
+  [title]="'Tìm kiếm'"
+  [bgColor]="'blue'"
+  (click)="searchService.search(enterpriseForm, 'enterprises')"
+>
+</ic-button>
+<ic-button [icon]="'redo'" [title]="'Reset'" [bgColor]="'yellow'" (click)="onReset()"></ic-button>
