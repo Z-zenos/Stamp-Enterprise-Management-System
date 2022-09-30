@@ -51,6 +51,6 @@ public class PackService {
     }
 
     public PacksResponse search(PackRequest packRequest) {
-        return packRepoCustom.searchCustom(packRequest);
+        return packRepoCustom.search(packRequest);
     }
 }

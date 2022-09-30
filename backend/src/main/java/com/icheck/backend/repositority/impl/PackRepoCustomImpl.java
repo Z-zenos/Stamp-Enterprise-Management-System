@@ -22,7 +22,8 @@ public class PackRepoCustomImpl implements PackRepoCustom {
     @Autowired
     private PackConverter packConverter;
     @Override
-    public PacksResponse searchCustom(PackRequest request) {
+    public PacksResponse search(PackRequest request) {
+        System.out.println(request);
         PacksResponse packsResponse = new PacksResponse();
         StringBuilder sql = new StringBuilder();
         Map<String, Object> params = new HashMap<>();

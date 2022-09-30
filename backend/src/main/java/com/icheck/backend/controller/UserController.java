@@ -3,6 +3,7 @@ package com.icheck.backend.controller;
 import com.icheck.backend.entity.User;
 import com.icheck.backend.request.UserRequest;
 import com.icheck.backend.response.UserResponse;
+import com.icheck.backend.response.UsersResponse;
 import com.icheck.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<UserResponse> add(@RequestBody  UserRequest userRequest){
+        userRequest.setStatus(1);
         UserResponse userResponse = service.save(userRequest);
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
@@ -30,6 +32,11 @@ public class UserController {
                                                @RequestBody UserRequest request){
         request.setId(id);
         UserResponse rsp = service.save(request);
+        return new ResponseEntity<>(rsp, HttpStatus.OK);
+    }
+    @GetMapping("/user")
+    public ResponseEntity<UsersResponse> search(@RequestBody UserRequest request){
+        UsersResponse rsp = service.search(request);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
 }

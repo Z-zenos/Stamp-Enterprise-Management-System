@@ -3,8 +3,10 @@ package com.icheck.backend.service;
 import com.icheck.backend.converter.UserConverter;
 import com.icheck.backend.entity.User;
 import com.icheck.backend.repositority.UserRepo;
+import com.icheck.backend.repositority.UserRepoCustom;
 import com.icheck.backend.request.UserRequest;
 import com.icheck.backend.response.UserResponse;
+import com.icheck.backend.response.UsersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,10 @@ public class UserService {
     @Autowired
     private UserConverter converter;
     @Autowired
+    private  UserRepoCustom repoCustom;
+    @Autowired
     private UserRepo repo;
+
     public UserResponse save(UserRequest userRequest) {
         User user = converter.toEntity(userRequest);
         try {
@@ -42,4 +47,7 @@ public class UserService {
         }
     }
 
+    public UsersResponse search(UserRequest request) {
+        return repoCustom.search(request);
+    }
 }

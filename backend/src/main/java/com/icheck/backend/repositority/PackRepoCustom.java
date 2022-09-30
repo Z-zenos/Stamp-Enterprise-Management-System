@@ -4,8 +4,9 @@ import com.icheck.backend.request.PackRequest;
 import com.icheck.backend.response.PacksResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
-@Component
+@Repository
 public interface PackRepoCustom {
-    public PacksResponse searchCustom(PackRequest request);
+    public PacksResponse search(PackRequest request);
 }
