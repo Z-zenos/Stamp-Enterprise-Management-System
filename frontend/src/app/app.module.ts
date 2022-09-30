@@ -17,7 +17,6 @@ import {NzIconModule} from "ng-zorro-antd/icon";
 import {NzToolTipModule} from "ng-zorro-antd/tooltip";
 import {NzWaveModule} from "ng-zorro-antd/core/wave";
 import {NzButtonModule} from "ng-zorro-antd/button";
-import { TableComponent } from './components/partials/table/table.component';
 import {NzTableModule} from "ng-zorro-antd/table";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzPopconfirmModule} from "ng-zorro-antd/popconfirm";
@@ -33,6 +32,17 @@ import {NzTimePickerModule} from "ng-zorro-antd/time-picker";
 import {NzDatePickerModule} from "ng-zorro-antd/date-picker";
 import {NzInputNumberModule} from "ng-zorro-antd/input-number";
 import { EnterpriseComponent } from './components/forms/enterprise/enterprise.component';
+import {NzModalModule} from "ng-zorro-antd/modal";
+import { SelectCityDistrictComponent } from './components/partials/select-city-district/select-city-district.component';
+import { PackagePageComponent } from './components/pages/package-page/package-page.component';
+import { PackageTableComponent } from './components/partials/tables/package-table/package-table.component';
+import { EnterpriseTableComponent } from './components/partials/tables/enterprise-table/enterprise-table.component';
+import { EnterprisePageComponent } from './components/pages/enterprise-page/enterprise-page.component';
+import { PackageBoxSearchComponent } from './components/partials/box-search/package-box-search/package-box-search.component';
+import { EnterpriseBoxSearchComponent } from './components/partials/box-search/enterprise-box-search/enterprise-box-search.component';
+import { PackageFormComponent } from './components/forms/package-form/package-form.component';
+import { SubmenuComponent } from './components/partials/submenu/submenu.component';
+import {NzDropDownModule} from "ng-zorro-antd/dropdown";
 
 registerLocaleData(en);
 
@@ -40,12 +50,20 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     SidebarComponent,
-    TableComponent,
     HeaderbarComponent,
     LayoutComponent,
     ButtonComponent,
     BadgeComponent,
-    EnterpriseComponent
+    EnterpriseComponent,
+    SelectCityDistrictComponent,
+    PackagePageComponent,
+    PackageTableComponent,
+    EnterpriseTableComponent,
+    EnterprisePageComponent,
+    PackageBoxSearchComponent,
+    EnterpriseBoxSearchComponent,
+    PackageFormComponent,
+    SubmenuComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +87,9 @@ registerLocaleData(en);
     NzSelectModule,
     NzTimePickerModule,
     NzDatePickerModule,
-    NzInputNumberModule
+    NzInputNumberModule,
+    NzModalModule,
+    NzDropDownModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

@@ -22,13 +22,16 @@
         width: 90%;
         margin: 1rem auto;
         &:hover {
-          background-color: $color-indigo-tertiary;
+          background: linear-gradient(88.72deg,#2f54eb 6.54%,#552feb 92.61%);
         }
       }
     }
   }
 
   &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &--text {
       width: 100%;
       height: 100%;
@@ -38,7 +41,7 @@
 
     &--img {
       width: 100%;
-      height: 100%;
+      height: 90%;
       background: center /
       cover no-repeat url("../../../../assets/images/icheck__logo.png");
       border-radius: 50%;
@@ -48,7 +51,7 @@
 
 ::ng-deep {
   .ant-menu-item-selected {
-    background-color: $color-indigo-tertiary !important;
+    background: linear-gradient(88.72deg,#2f54eb 6.54%,#552feb 92.61%);
     text-align: center !important;
   }
 

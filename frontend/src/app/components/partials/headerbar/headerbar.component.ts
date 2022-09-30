@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-headerbar',
+  selector: 'ic-headerbar',
   templateUrl: './headerbar.component.html',
   styleUrls: ['./headerbar.component.scss']
 })

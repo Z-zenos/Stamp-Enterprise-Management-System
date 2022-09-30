@@ -1,17 +1,16 @@
 <nz-layout>
   <nz-sider [(nzCollapsed)]="isCollapsed">
-    <app-sidebar [isCollapsed]="isCollapsed"></app-sidebar>
+    <ic-sidebar [isCollapsed]="isCollapsed"></ic-sidebar>
   </nz-sider>
 
   <nz-layout>
     <nz-header>
-      <app-headerbar [isCollapsed]="isCollapsed" (collapsedEvent)="toggleCollapsed($event)">
-      </app-headerbar>
+      <ic-headerbar [isCollapsed]="isCollapsed" (collapsedEvent)="toggleCollapsed($event)">
+      </ic-headerbar>
     </nz-header>
 
     <nz-content>
-<!--      <app-table></app-table>-->
-      <ic-form-enterprise></ic-form-enterprise>
+      <router-outlet></router-outlet>
     </nz-content>
   </nz-layout>
 </nz-layout>

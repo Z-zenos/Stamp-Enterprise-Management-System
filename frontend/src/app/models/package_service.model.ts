@@ -1,9 +1,9 @@
-export class PackageService {
+export class Package {
   id!: number;
   code!: string;
   name!: string;
   quantity!: number;
   price!: number;
-  createAt!: Date;
+  createdAt!: Date;
   status!: number;
 }

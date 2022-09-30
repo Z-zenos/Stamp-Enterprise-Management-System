@@ -6,10 +6,11 @@
   font-size: 1.4rem;
   border: none;
   outline: none;
-  border-radius: .8rem;
+  border-radius: .4rem;
   cursor: pointer;
   opacity: .9;
   font-weight: 600;
+  transition: all .3s ease;
 
   &:hover {
     opacity: 1;
@@ -18,10 +19,40 @@
   &--green {
     background-color: $color-green-tertiary;
     color: $color-green-secondary;
+    border: 1px solid $color-green-tertiary;
+
+    &:hover {
+      border: 1px solid $color-green-secondary;
+    }
   }
 
   &--red {
     background-color: $color-red-tertiary;
     color: $color-red-secondary;
+    border: 1px solid $color-red-tertiary;
+
+    &:hover {
+      border: 1px solid $color-red-secondary;
+    }
+  }
+
+  &--yellow {
+    background-color: $color-yellow-tertiary;
+    color: $color-yellow-secondary;
+    border: 1px solid $color-yellow-tertiary;
+
+    &:hover {
+      border: 1px solid $color-yellow-secondary;
+    }
+  }
+
+  &--blue {
+    background-color: $color-blue-tertiary;
+    color: $color-blue-secondary;
+    border: 1px solid $color-blue-tertiary;
+
+    &:hover {
+      border: 1px solid $color-blue-secondary;
+    }
   }
 }
