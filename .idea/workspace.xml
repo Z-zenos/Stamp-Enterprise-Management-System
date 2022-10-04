@@ -1,90 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Stamp-Enterprise-Management-System:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="Set base of project">
+    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Stamp_Enterprise_Management_System_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_jul_2_17_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_17_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Stamp_Enterprise_Management_System_jar/Stamp-Enterprise-Management-System.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_17_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_17_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_22_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_7_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_7_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_log4j2_2_7_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_7_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_7_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_7_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_3_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/forms/enterprise/enterprise.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layouts/layout/layout.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/button/button.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/headerbar/headerbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/headerbar/headerbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/partials/sidebar/sidebar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/models/package_service.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/models/package_service.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/enterprise.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/enterprise.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/icheck/backend/BackendApplicationTests.java" beforeDir="false" />
     </list>
-=======
-    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="" />
->>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2F7APiCii7ScL6OGpT1gjOWnCVg" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Documents/JAVA/SPRING_BOOT/Stamp-Enterprise-Management-System/backend/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System/frontend/node_modules/typescript/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/src/assets/images" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.icheck.backend.request." />
+      <recent name="com.icheck.backend.response" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icheck.backend.util" />
     </key>
   </component>
-=======
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/fuurinkazan/Documents/JavaScript/Angular/Practice/Stamp Enterprise Management System",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
->>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="backend" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.icheck.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -93,45 +184,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663832726809</updated>
-<<<<<<< HEAD
-      <workItem from="1663832727969" duration="5171000" />
-      <workItem from="1663840284692" duration="2883000" />
-      <workItem from="1663859837306" duration="1766000" />
-      <workItem from="1663915297784" duration="13296000" />
-      <workItem from="1663942160906" duration="15409000" />
-      <workItem from="1663994982345" duration="24599000" />
-      <workItem from="1664088644330" duration="737000" />
-      <workItem from="1664158581358" duration="26392000" />
-      <workItem from="1664198979354" duration="35000" />
-      <workItem from="1664249077860" duration="19811000" />
-      <workItem from="1664287586604" duration="1737000" />
-      <workItem from="1664333848646" duration="19012000" />
-      <workItem from="1664372814445" duration="16000" />
-      <workItem from="1664417601517" duration="8243000" />
-      <workItem from="1664429707830" duration="4535000" />
-      <workItem from="1664436811195" duration="10346000" />
-      <workItem from="1664458334351" duration="6708000" />
-      <workItem from="1664504221081" duration="2863000" />
-      <workItem from="1664511644088" duration="3795000" />
-      <workItem from="1664520691916" duration="6796000" />
-      <workItem from="1664562780297" duration="719000" />
-    </task>
-    <task id="LOCAL-00001" summary="Create badge component">
-      <created>1664088674583</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088674584</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Create button component">
-      <created>1664088692548</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1664088692548</updated>
-=======
       <workItem from="1663832727969" duration="937000" />
->>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+      <workItem from="1663836755701" duration="4538000" />
+      <workItem from="1663899977407" duration="10247000" />
+      <workItem from="1664158121657" duration="21069000" />
+      <workItem from="1664245299765" duration="17086000" />
+      <workItem from="1664330564757" duration="17994000" />
+      <workItem from="1664417298141" duration="6457000" />
+      <workItem from="1664510714485" duration="3978000" />
     </task>
     <servers />
   </component>
@@ -148,5 +208,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

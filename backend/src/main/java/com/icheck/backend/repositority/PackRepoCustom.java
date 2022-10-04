@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Repository
 public interface PackRepoCustom {
-    public PacksResponse search(PackRequest request);
+    public PacksResponse search(String code, String name, int status);
 }

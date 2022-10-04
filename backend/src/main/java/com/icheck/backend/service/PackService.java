@@ -8,6 +8,7 @@ import com.icheck.backend.request.PackRequest;
 import com.icheck.backend.response.PackResponse;
 import com.icheck.backend.response.PacksResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class PackService {
     @Autowired
     private PackRepo packRepo;
+    @Qualifier("packRepoCustom")
     @Autowired
     private PackRepoCustom packRepoCustom;
     @Autowired
@@ -35,8 +37,8 @@ public class PackService {
         }
     }
 
-    public Pack getById(Long id) {
-        return packRepo.findById(id).get();
+    public PackResponse getById(Long id) {
+        return packConverter.toResponse(packRepo.findById(id).get());
     }
 
     public PackResponse save(PackRequest packRequest) {
@@ -50,7 +52,7 @@ public class PackService {
         }
     }
 
-    public PacksResponse search(PackRequest packRequest) {
-        return packRepoCustom.search(packRequest);
+    public PacksResponse search(String code, String name, int status) {
+        return packRepoCustom.search(code, name, status);
     }
 }

@@ -8,6 +8,7 @@ import com.icheck.backend.request.UserRequest;
 import com.icheck.backend.response.UserResponse;
 import com.icheck.backend.response.UsersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 public class UserService {
     @Autowired
     private UserConverter converter;
+    @Qualifier("userRepoCustom")
     @Autowired
     private  UserRepoCustom repoCustom;
     @Autowired
@@ -33,8 +35,8 @@ public class UserService {
         }
     }
 
-    public User getById(Long id) {
-        return repo.findById(id).get();
+    public UserResponse getById(Long id) {
+        return converter.toResponse(repo.findById(id).get());
     }
 
     public UserResponse delete(User user) {
@@ -47,7 +49,7 @@ public class UserService {
         }
     }
 
-    public UsersResponse search(UserRequest request) {
-        return repoCustom.search(request);
+    public UsersResponse search(String name, String email, String phone, String taxCode, String city, String district,String address, int status) {
+        return repoCustom.search(name, email, phone, taxCode, city, district,address, status);
     }
 }

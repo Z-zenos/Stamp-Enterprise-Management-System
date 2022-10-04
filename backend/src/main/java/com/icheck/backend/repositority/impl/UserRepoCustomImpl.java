@@ -18,14 +18,14 @@ import javax.persistence.Query;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@Component
+@Component("userRepoCustom")
 public class UserRepoCustomImpl implements UserRepoCustom {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
     private UserConverter converter;
     @Override
-    public UsersResponse search(UserRequest request){
+    public UsersResponse search(String name, String email, String phone, String taxCode, String city, String district,String address, int status){
         StringBuilder sql = new StringBuilder();
         Map<String, Object> params = new HashMap<>();
 
@@ -37,17 +37,17 @@ public class UserRepoCustomImpl implements UserRepoCustom {
                 "and (u.district LIKE :district) " +
                 "and (u.address LIKE :address) ");
 
-        params.put("name", "%"+request.getName()+"%");
-        params.put("phone", "%"+request.getPhone()+"%");
-        params.put("email", "%"+request.getEmail()+"%");
-        params.put("taxCode", "%"+request.getTaxCode()+"%");
-        params.put("city", "%"+request.getCity()+"%");
-        params.put("district", "%"+request.getDistrict()+"%");
-        params.put("address", "%"+request.getAddress()+"%");
+        params.put("name", "%"+name+"%");
+        params.put("phone", "%"+phone+"%");
+        params.put("email", "%"+email+"%");
+        params.put("taxCode", "%"+taxCode+"%");
+        params.put("city", "%"+city+"%");
+        params.put("district", "%"+district+"%");
+        params.put("address", "%"+address+"%");
 
-        if(request.getStatus() != -1){
+        if(status != -1){
             sql.append("and u.status LIKE :status");
-            params.put("status", request.getStatus());
+            params.put("status", status);
         }
         Query query = entityManager.createQuery(sql.toString());
         params.forEach(query::setParameter);

@@ -4,10 +4,9 @@ import com.icheck.backend.entity.Pack;
 import com.icheck.backend.request.PackRequest;
 import com.icheck.backend.response.PackResponse;
 import com.icheck.backend.response.PacksResponse;
+import com.icheck.backend.DAO.PackDao;
 import com.icheck.backend.service.PackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 public class PackController {
     @Autowired
     private PackService packService;
+    @Autowired
+    private PackDao dao;
 
     @PostMapping("/package")
     public ResponseEntity<PackResponse> add(@RequestBody PackRequest packRequest){
@@ -32,16 +33,22 @@ public class PackController {
     }
     @DeleteMapping("package/{id}")
     public ResponseEntity<PackResponse> delete(@PathVariable("id") Long id){
-        Pack pack = packService.getById(id);
+        Pack pack = dao.getById(id);
         PackResponse rsp = packService.delete(pack);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
-    @GetMapping("/package")
-    public ResponseEntity<PacksResponse> search(@RequestBody PackRequest packRequest){
-        PacksResponse packsResponse = packService.search(packRequest);
+    @GetMapping("/packages")
+    public ResponseEntity<PacksResponse> search(@RequestParam(name = "code", defaultValue = "", required = false) String code,
+                                                @RequestParam(name = "name", required = false, defaultValue = "") String name,
+                                                @RequestParam(name = "status", required = false, defaultValue = "-1") String status){
+        PacksResponse packsResponse = packService.search(code, name, Integer.valueOf(status));
         return new ResponseEntity<>(packsResponse, HttpStatus.OK);
     }
-
+    @GetMapping("/package/{id}")
+    public ResponseEntity<PackResponse> getById(@PathVariable(name = "id") Long id){
+        PackResponse packResponse = packService.getById(id);
+        return new ResponseEntity<>(packResponse, HttpStatus.OK);
+    }
 
 
 }

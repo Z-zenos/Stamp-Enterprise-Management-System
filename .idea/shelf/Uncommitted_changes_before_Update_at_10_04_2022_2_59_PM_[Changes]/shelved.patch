@@ -1,0 +1,694 @@
+Index: backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.repositority.impl;\r\n\r\nimport com.icheck.backend.converter.PackConverter;\r\nimport com.icheck.backend.entity.Pack;\r\nimport com.icheck.backend.repositority.PackRepo;\r\nimport com.icheck.backend.repositority.PackRepoCustom;\r\nimport com.icheck.backend.request.PackRequest;\r\nimport com.icheck.backend.response.PacksResponse;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Component;\r\n\r\nimport javax.persistence.EntityManager;\r\nimport javax.persistence.PersistenceContext;\r\nimport javax.persistence.Query;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n@Component\r\npublic class PackRepoCustomImpl implements PackRepoCustom {\r\n    @PersistenceContext\r\n    private EntityManager entityManager;\r\n    @Autowired\r\n    private PackConverter packConverter;\r\n    @Override\r\n    public PacksResponse search(PackRequest request) {\r\n        System.out.println(request);\r\n        PacksResponse packsResponse = new PacksResponse();\r\n        StringBuilder sql = new StringBuilder();\r\n        Map<String, Object> params = new HashMap<>();\r\n        sql.append(\"select * from pack p where p.code LIKE :code and p.name LIKE :name \");\r\n        params.put(\"code\", \"%\"+request.getCode()+\"%\");\r\n        params.put(\"name\", \"%\"+request.getName()+\"%\");\r\n\r\n        if (request.getStatus() != -1){\r\n            sql.append(\"and status = :status\");\r\n            params.put(\"status\", request.getStatus());\r\n        }\r\n        Query query = entityManager.createNativeQuery(sql.toString(), Pack.class);\r\n        params.forEach(query::setParameter);\r\n        List<Pack> packList =  query.getResultList();\r\n        for (Pack pack:packList) {\r\n            packsResponse.getPackList().add(packConverter.toResponse(pack));\r\n        }\r\n        return packsResponse;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java b/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java
+--- a/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java	(date 1664854157177)
+@@ -15,25 +15,24 @@
+ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+-@Component
++@Component("packRepoCustom")
+ public class PackRepoCustomImpl implements PackRepoCustom {
+     @PersistenceContext
+     private EntityManager entityManager;
+     @Autowired
+     private PackConverter packConverter;
+     @Override
+-    public PacksResponse search(PackRequest request) {
+-        System.out.println(request);
++    public PacksResponse search(String code, String name, int status) {
+         PacksResponse packsResponse = new PacksResponse();
+         StringBuilder sql = new StringBuilder();
+         Map<String, Object> params = new HashMap<>();
+         sql.append("select * from pack p where p.code LIKE :code and p.name LIKE :name ");
+-        params.put("code", "%"+request.getCode()+"%");
+-        params.put("name", "%"+request.getName()+"%");
++        params.put("code", "%"+code+"%");
++        params.put("name", "%"+name+"%");
+ 
+-        if (request.getStatus() != -1){
++        if (status != -1){
+             sql.append("and status = :status");
+-            params.put("status", request.getStatus());
++            params.put("status", status);
+         }
+         Query query = entityManager.createNativeQuery(sql.toString(), Pack.class);
+         params.forEach(query::setParameter);
+Index: backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.controller;\r\n\r\nimport com.icheck.backend.request.AuthenticateRequest;\r\nimport com.icheck.backend.response.AuthenticateResponse;\r\nimport com.icheck.backend.security.MyUserDetailService;\r\nimport com.icheck.backend.util.JwtUtil;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.security.authentication.AuthenticationManager;\r\nimport org.springframework.security.authentication.BadCredentialsException;\r\nimport org.springframework.security.authentication.UsernamePasswordAuthenticationToken;\r\nimport org.springframework.security.core.userdetails.UserDetails;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\n@RestController\r\npublic class AuthenticateController {\r\n    @Autowired\r\n    private AuthenticationManager authenticationManager;\r\n    @Autowired\r\n    private MyUserDetailService myUserDetailService;\r\n    @Autowired\r\n    private JwtUtil jwtTokenUntil;\r\n\r\n    @GetMapping(\"/hello\")\r\n    public String sayHello(){\r\n        return \"Welcome to Spring Security\";\r\n    }\r\n\r\n    @PostMapping(\"/authenticate\")\r\n    public ResponseEntity<?> createAuthenticate(@RequestBody AuthenticateRequest authenticateRequest) throws Exception{\r\n        System.out.println(authenticateRequest);\r\n        try {\r\n            authenticationManager.authenticate(\r\n                    new UsernamePasswordAuthenticationToken(authenticateRequest.getUsername(),\r\n                                                            authenticateRequest.getPassword()));\r\n        }catch(BadCredentialsException e){\r\n            throw new Exception(\"Incorrect username or password\", e);\r\n        }\r\n        final UserDetails userDetails = myUserDetailService.loadUserByUsername(authenticateRequest.getUsername());\r\n        System.out.println(userDetails);\r\n        String jwt = jwtTokenUntil.generateToken(userDetails);\r\n        return ResponseEntity.ok(new AuthenticateResponse(jwt));\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java b/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java
+--- a/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java	(date 1664849841360)
+@@ -37,7 +37,7 @@
+             throw new Exception("Incorrect username or password", e);
+         }
+         final UserDetails userDetails = myUserDetailService.loadUserByUsername(authenticateRequest.getUsername());
+-        System.out.println(userDetails);
++
+         String jwt = jwtTokenUntil.generateToken(userDetails);
+         return ResponseEntity.ok(new AuthenticateResponse(jwt));
+     }
+Index: backend/src/main/java/com/icheck/backend/controller/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.controller;\r\n\r\nimport com.icheck.backend.entity.User;\r\nimport com.icheck.backend.request.UserRequest;\r\nimport com.icheck.backend.response.UserResponse;\r\nimport com.icheck.backend.response.UsersResponse;\r\nimport com.icheck.backend.service.UserService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\n@RestController\r\npublic class UserController {\r\n    @Autowired\r\n    private UserService service;\r\n\r\n    @PostMapping(\"/user\")\r\n    public ResponseEntity<UserResponse> add(@RequestBody  UserRequest userRequest){\r\n        userRequest.setStatus(1);\r\n        UserResponse userResponse = service.save(userRequest);\r\n        return new ResponseEntity<>(userResponse, HttpStatus.OK);\r\n    }\r\n    @DeleteMapping(\"/user/{id}\")\r\n    public ResponseEntity<UserResponse> delete(@PathVariable(\"id\") Long id){\r\n        User user = service.getById(id);\r\n        UserResponse userResponse = service.delete(user);\r\n        return new ResponseEntity<>(userResponse, HttpStatus.OK);\r\n    }\r\n    @PutMapping(\"/user/{id}\")\r\n    public ResponseEntity<UserResponse> update(@PathVariable(\"id\") Long id,\r\n                                               @RequestBody UserRequest request){\r\n        request.setId(id);\r\n        UserResponse rsp = service.save(request);\r\n        return new ResponseEntity<>(rsp, HttpStatus.OK);\r\n    }\r\n    @GetMapping(\"/user\")\r\n    public ResponseEntity<UsersResponse> search(@RequestBody UserRequest request){\r\n        UsersResponse rsp = service.search(request);\r\n        return new ResponseEntity<>(rsp, HttpStatus.OK);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/controller/UserController.java b/backend/src/main/java/com/icheck/backend/controller/UserController.java
+--- a/backend/src/main/java/com/icheck/backend/controller/UserController.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/controller/UserController.java	(date 1664858307692)
+@@ -1,5 +1,6 @@
+ package com.icheck.backend.controller;
+ 
++import com.icheck.backend.DAO.UserDao;
+ import com.icheck.backend.entity.User;
+ import com.icheck.backend.request.UserRequest;
+ import com.icheck.backend.response.UserResponse;
+@@ -14,6 +15,8 @@
+ public class UserController {
+     @Autowired
+     private UserService service;
++    @Autowired
++    private UserDao dao;
+ 
+     @PostMapping("/user")
+     public ResponseEntity<UserResponse> add(@RequestBody  UserRequest userRequest){
+@@ -23,7 +26,7 @@
+     }
+     @DeleteMapping("/user/{id}")
+     public ResponseEntity<UserResponse> delete(@PathVariable("id") Long id){
+-        User user = service.getById(id);
++        User user = dao.getById(id);
+         UserResponse userResponse = service.delete(user);
+         return new ResponseEntity<>(userResponse, HttpStatus.OK);
+     }
+@@ -34,9 +37,26 @@
+         UserResponse rsp = service.save(request);
+         return new ResponseEntity<>(rsp, HttpStatus.OK);
+     }
+-    @GetMapping("/user")
+-    public ResponseEntity<UsersResponse> search(@RequestBody UserRequest request){
+-        UsersResponse rsp = service.search(request);
++    @GetMapping("/users")
++    public ResponseEntity<UsersResponse> search(@RequestParam(name = "name", defaultValue = "", required = false) String name,
++                                                @RequestParam(name = "email", required = false, defaultValue = "") String email,
++                                                @RequestParam(name = "phone", required = false, defaultValue = "") String phone,
++                                                @RequestParam(name = "taxCode", required = false, defaultValue = "") String taxCode,
++                                                @RequestParam(name = "city", required = false, defaultValue = "") String city,
++                                                @RequestParam(name = "district", required = false, defaultValue = "") String district,
++                                                @RequestParam(name = "address", required = false, defaultValue = "") String address,
++                                                @RequestParam(name = "status", required = false, defaultValue = "-1") String status
++                                                ){
++        UsersResponse rsp = service.search(name, email, phone, taxCode, city, district,address, Integer.valueOf(status));
+         return new ResponseEntity<>(rsp, HttpStatus.OK);
++    }
++    @GetMapping("/user/{id}")
++    public ResponseEntity<UserResponse> getById(@PathVariable(name = "id") Long id){
++        UserResponse rsp = service.getById(id);
++        return new ResponseEntity<>(rsp, HttpStatus.OK);
++    }
++
++    @PostMapping("/user/pack/{id}"){
++
+     }
+ }
+Index: backend/src/main/java/com/icheck/backend/DAO/UserDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/DAO/UserDao.java b/backend/src/main/java/com/icheck/backend/DAO/UserDao.java
+new file mode 100644
+--- /dev/null	(date 1664853075713)
++++ b/backend/src/main/java/com/icheck/backend/DAO/UserDao.java	(date 1664853075713)
+@@ -0,0 +1,16 @@
++package com.icheck.backend.DAO;
++
++import com.icheck.backend.entity.User;
++import com.icheck.backend.repositority.UserRepo;
++import com.icheck.backend.response.UserResponse;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
++
++@Component
++public class UserDao {
++    @Autowired
++    private UserRepo repo;
++    public User getById(Long id){
++        return repo.findById(id).get();
++    }
++}
+Index: backend/src/main/resources/log4j2.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/resources/log4j2.xml b/backend/src/main/resources/log4j2.xml
+new file mode 100644
+--- /dev/null	(date 1664511740079)
++++ b/backend/src/main/resources/log4j2.xml	(date 1664511740079)
+@@ -0,0 +1,71 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<Configuration status="INFO" monitorInterval="30">
++
++	<Properties>
++		<Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} [%t] %-5level %logger{36} - [%X{X-B3-TraceId}] - %msg%n
++		</Property>
++	</Properties>
++
++	<Appenders>
++		<Console name="Console" target="SYSTEM_OUT" follow="true">
++			<LevelRangeFilter minLevel="ERROR" maxLevel="info" onMatch="ACCEPT" onMismatch="DENY" />
++			<PatternLayout pattern="${LOG_PATTERN}" />
++		</Console>
++		<RollingFile name="infoLog" fileName="logs/info.log" filePattern="logs/%d{yyyy-MM-dd}-info-%i.log">
++			<LevelRangeFilter minLevel="ERROR" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY" />
++			<PatternLayout pattern="${LOG_PATTERN}" />
++			<Policies>
++				<TimeBasedTriggeringPolicy />
++				<!-- 				<SizeBasedTriggeringPolicy size="50 MB" /> -->
++			</Policies>
++			<DefaultRolloverStrategy max="10" />
++		</RollingFile>
++		<RollingFile name="errorLog" fileName="logs/error.log" filePattern="logs/%d{yyyy-MM-dd}-info-%i.log">
++			<LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
++			<PatternLayout pattern="${LOG_PATTERN}" />
++			<Policies>
++				<TimeBasedTriggeringPolicy />
++				<!-- 				<SizeBasedTriggeringPolicy size="19500KB" /> -->
++			</Policies>
++			<DefaultRolloverStrategy max="10" />
++		</RollingFile>
++		<RollingFile name="warnLog" fileName="logs/warn.log" filePattern="logs/%d{yyyy-MM-dd}-warn-%i.log">
++			<LevelRangeFilter minLevel="WARN" maxLevel="WARN" onMatch="ACCEPT" onMismatch="DENY" />
++			<PatternLayout pattern="${LOG_PATTERN}" />
++			<Policies>
++				<TimeBasedTriggeringPolicy />
++				<!-- 				<SizeBasedTriggeringPolicy size="19500KB" /> -->
++			</Policies>
++			<DefaultRolloverStrategy max="10" />
++		</RollingFile>
++
++		<RollingFile name="debugLog" fileName="logs/debug.log" filePattern="logs/%d{yyyy-MM-dd}-debug-%i.log">
++			<LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
++			<PatternLayout pattern="${LOG_PATTERN}" />
++			<Policies>
++				<TimeBasedTriggeringPolicy />
++				<!-- 				<SizeBasedTriggeringPolicy size="19500KB" /> -->
++			</Policies>
++			<DefaultRolloverStrategy max="10" />
++		</RollingFile>
++	</Appenders>
++	<Loggers>
++		<Logger name="vn.icheck.qrcode.qraps" additivity="false">
++			<AppenderRef ref="infoLog" />
++			<AppenderRef ref="errorLog" />
++			<AppenderRef ref="Console" />
++			<AppenderRef ref="debugLog" />
++			<AppenderRef ref="warnLog" />
++		</Logger>
++
++
++		<Root level="all">
++			<AppenderRef ref="infoLog" />
++			<AppenderRef ref="errorLog" />
++			<AppenderRef ref="Console" />
++			<AppenderRef ref="debugLog" />
++			<AppenderRef ref="warnLog" />
++		</Root>
++
++	</Loggers>
++</Configuration>
+\ No newline at end of file
+Index: backend/src/main/java/com/icheck/backend/controller/PackController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.controller;\r\n\r\nimport com.icheck.backend.entity.Pack;\r\nimport com.icheck.backend.request.PackRequest;\r\nimport com.icheck.backend.response.PackResponse;\r\nimport com.icheck.backend.response.PacksResponse;\r\nimport com.icheck.backend.service.PackService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.data.domain.PageRequest;\r\nimport org.springframework.data.domain.Pageable;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\n@RestController\r\npublic class PackController {\r\n    @Autowired\r\n    private PackService packService;\r\n\r\n    @PostMapping(\"/package\")\r\n    public ResponseEntity<PackResponse> add(@RequestBody PackRequest packRequest){\r\n        PackResponse rsp = packService.save(packRequest);\r\n        return new ResponseEntity<>(rsp, HttpStatus.OK);\r\n    }\r\n    @PutMapping(\"/package/{id}\")\r\n    public ResponseEntity<PackResponse> update(@PathVariable(\"id\") Long id,\r\n                                               @RequestBody PackRequest packRequest){\r\n        packRequest.setId(id);\r\n        PackResponse rsp = packService.save(packRequest);\r\n        return new ResponseEntity<>(rsp, HttpStatus.OK);\r\n\r\n    }\r\n    @DeleteMapping(\"package/{id}\")\r\n    public ResponseEntity<PackResponse> delete(@PathVariable(\"id\") Long id){\r\n        Pack pack = packService.getById(id);\r\n        PackResponse rsp = packService.delete(pack);\r\n        return new ResponseEntity<>(rsp, HttpStatus.OK);\r\n    }\r\n    @GetMapping(\"/package\")\r\n    public ResponseEntity<PacksResponse> search(@RequestBody PackRequest packRequest){\r\n        PacksResponse packsResponse = packService.search(packRequest);\r\n        return new ResponseEntity<>(packsResponse, HttpStatus.OK);\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/controller/PackController.java b/backend/src/main/java/com/icheck/backend/controller/PackController.java
+--- a/backend/src/main/java/com/icheck/backend/controller/PackController.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/controller/PackController.java	(date 1664853039428)
+@@ -4,10 +4,9 @@
+ import com.icheck.backend.request.PackRequest;
+ import com.icheck.backend.response.PackResponse;
+ import com.icheck.backend.response.PacksResponse;
++import com.icheck.backend.DAO.PackDao;
+ import com.icheck.backend.service.PackService;
+ import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.data.domain.PageRequest;
+-import org.springframework.data.domain.Pageable;
+ import org.springframework.http.HttpStatus;
+ import org.springframework.http.ResponseEntity;
+ import org.springframework.web.bind.annotation.*;
+@@ -16,6 +15,8 @@
+ public class PackController {
+     @Autowired
+     private PackService packService;
++    @Autowired
++    private PackDao dao;
+ 
+     @PostMapping("/package")
+     public ResponseEntity<PackResponse> add(@RequestBody PackRequest packRequest){
+@@ -32,16 +33,22 @@
+     }
+     @DeleteMapping("package/{id}")
+     public ResponseEntity<PackResponse> delete(@PathVariable("id") Long id){
+-        Pack pack = packService.getById(id);
++        Pack pack = dao.getById(id);
+         PackResponse rsp = packService.delete(pack);
+         return new ResponseEntity<>(rsp, HttpStatus.OK);
+     }
+-    @GetMapping("/package")
+-    public ResponseEntity<PacksResponse> search(@RequestBody PackRequest packRequest){
+-        PacksResponse packsResponse = packService.search(packRequest);
++    @GetMapping("/packages")
++    public ResponseEntity<PacksResponse> search(@RequestParam(name = "code", defaultValue = "", required = false) String code,
++                                                @RequestParam(name = "name", required = false, defaultValue = "") String name,
++                                                @RequestParam(name = "status", required = false, defaultValue = "-1") String status){
++        PacksResponse packsResponse = packService.search(code, name, Integer.valueOf(status));
+         return new ResponseEntity<>(packsResponse, HttpStatus.OK);
+     }
+-
++    @GetMapping("/package/{id}")
++    public ResponseEntity<PackResponse> getById(@PathVariable(name = "id") Long id){
++        PackResponse packResponse = packService.getById(id);
++        return new ResponseEntity<>(packResponse, HttpStatus.OK);
++    }
+ 
+ 
+ }
+Index: backend/src/main/java/com/icheck/backend/service/PackService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.service;\r\n\r\nimport com.icheck.backend.converter.PackConverter;\r\nimport com.icheck.backend.entity.Pack;\r\nimport com.icheck.backend.repositority.PackRepo;\r\nimport com.icheck.backend.repositority.PackRepoCustom;\r\nimport com.icheck.backend.request.PackRequest;\r\nimport com.icheck.backend.response.PackResponse;\r\nimport com.icheck.backend.response.PacksResponse;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.data.domain.Page;\r\nimport org.springframework.data.domain.Pageable;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@Service\r\npublic class PackService {\r\n    @Autowired\r\n    private PackRepo packRepo;\r\n    @Autowired\r\n    private PackRepoCustom packRepoCustom;\r\n    @Autowired\r\n    private PackConverter packConverter;\r\n\r\n    public PackResponse delete(Pack pack) {\r\n        try {\r\n            packRepo.delete(pack);\r\n            return packConverter.toResponse(pack);\r\n        }catch(Exception e){\r\n            e.getStackTrace();\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public Pack getById(Long id) {\r\n        return packRepo.findById(id).get();\r\n    }\r\n\r\n    public PackResponse save(PackRequest packRequest) {\r\n        Pack pack = packConverter.toEntity(packRequest);\r\n        try{\r\n            packRepo.save(pack);\r\n            return packConverter.toResponse(pack);\r\n        }catch(Exception e){\r\n            e.getStackTrace();\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public PacksResponse search(PackRequest packRequest) {\r\n        return packRepoCustom.search(packRequest);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/service/PackService.java b/backend/src/main/java/com/icheck/backend/service/PackService.java
+--- a/backend/src/main/java/com/icheck/backend/service/PackService.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/service/PackService.java	(date 1664854197259)
+@@ -8,6 +8,7 @@
+ import com.icheck.backend.response.PackResponse;
+ import com.icheck.backend.response.PacksResponse;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.beans.factory.annotation.Qualifier;
+ import org.springframework.data.domain.Page;
+ import org.springframework.data.domain.Pageable;
+ import org.springframework.stereotype.Service;
+@@ -20,6 +21,7 @@
+ public class PackService {
+     @Autowired
+     private PackRepo packRepo;
++    @Qualifier("packRepoCustom")
+     @Autowired
+     private PackRepoCustom packRepoCustom;
+     @Autowired
+@@ -35,8 +37,8 @@
+         }
+     }
+ 
+-    public Pack getById(Long id) {
+-        return packRepo.findById(id).get();
++    public PackResponse getById(Long id) {
++        return packConverter.toResponse(packRepo.findById(id).get());
+     }
+ 
+     public PackResponse save(PackRequest packRequest) {
+@@ -50,7 +52,7 @@
+         }
+     }
+ 
+-    public PacksResponse search(PackRequest packRequest) {
+-        return packRepoCustom.search(packRequest);
++    public PacksResponse search(String code, String name, int status) {
++        return packRepoCustom.search(code, name, status);
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"Stamp-Enterprise-Management-System:jar\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c1b9926e-4951-428e-a475-54ed4d9b6712\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/artifacts/Stamp_Enterprise_Management_System_jar.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_jul_2_17_2.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_17_2.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/backend/src/main/resources/META-INF/MANIFEST.MF\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/out/artifacts/Stamp_Enterprise_Management_System_jar/Stamp-Enterprise-Management-System.jar\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_11.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_11.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_13.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_17_2.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_17_2.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_22_0.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_5_1.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_5_1.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_7_3.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_7_3.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_log4j2_2_7_3.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_7_3.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_7_3.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_7_3.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_3_22.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_0.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/BackendApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/BackendApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/backend/src/test/java/com/icheck/backend/BackendApplicationTests.java\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"JpbToolWindowState\">\r\n    <option name=\"myId2FirstActivated\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"true\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"myId2Visible\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"false\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2F7APiCii7ScL6OGpT1gjOWnCVg\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"RequestMappingsPanelOrder0\": \"0\",\r\n    \"RequestMappingsPanelOrder1\": \"1\",\r\n    \"RequestMappingsPanelWidth0\": \"75\",\r\n    \"RequestMappingsPanelWidth1\": \"75\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"jdk.selected.JAVA_MODULE\": \"17\",\r\n    \"last_opened_file_path\": \"E:/Documents/JAVA/SPRING_BOOT/Stamp-Enterprise-Management-System/backend/src/main/resources\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"project.structure.last.edited\": \"Artifacts\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"reference.settings.project.maven.repository.indices\",\r\n    \"spring.configuration.checksum\": \"b43fdd98b1fd705ae4c3a10cf25aad8a\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateClassDialog.RecentsKey\">\r\n      <recent name=\"com.icheck.backend.request.\" />\r\n      <recent name=\"com.icheck.backend.response\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.icheck.backend.util\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Spring Boot.BackendApplication\">\r\n    <configuration name=\"Angular Application\" type=\"JavascriptDebugType\" uri=\"http://localhost:4200\">\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"BackendApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"backend\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.icheck.backend.BackendApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Angular CLI Server\" type=\"js.build_tools.npm\">\r\n      <package-json value=\"$PROJECT_DIR$/frontend/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"start\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c1b9926e-4951-428e-a475-54ed4d9b6712\" name=\"Changes\" comment=\"\" />\r\n      <created>1663832726809</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1663832726809</updated>\r\n      <workItem from=\"1663832727969\" duration=\"937000\" />\r\n      <workItem from=\"1663836755701\" duration=\"4538000\" />\r\n      <workItem from=\"1663899977407\" duration=\"10247000\" />\r\n      <workItem from=\"1664158121657\" duration=\"21069000\" />\r\n      <workItem from=\"1664245299765\" duration=\"17086000\" />\r\n      <workItem from=\"1664330564757\" duration=\"17994000\" />\r\n      <workItem from=\"1664417298141\" duration=\"6457000\" />\r\n      <workItem from=\"1664510714485\" duration=\"3978000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/.idea/workspace.xml	(date 1664870278460)
+@@ -10,42 +10,13 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Stamp_Enterprise_Management_System_jar.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_jul_2_17_2.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_slf4j_impl_2_17_2.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/out/artifacts/Stamp_Enterprise_Management_System_jar/Stamp-Enterprise-Management-System.jar" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_11.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_11.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_1_2_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_13.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_17_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_17_2.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_22_0.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_8_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_8_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_5_1.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_5_1.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_7_3.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_7_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_log4j2_2_7_3.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_7_3.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_7_3.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_test_5_7_3.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_3_22.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_0.xml" beforeDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/PackDao.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/UserDao.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/security/MyUser.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/log4j2.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/BackendApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" afterDir="false" />
+@@ -53,7 +24,6 @@
+       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/icheck/backend/BackendApplicationTests.java" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -81,7 +51,7 @@
+     </option>
+     <option name="myId2Visible">
+       <map>
+-        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
++        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+         <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+         <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+       </map>
+@@ -98,38 +68,42 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_ADD_EXTERNAL_FILES": "true",
+-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "RequestMappingsPanelOrder0": "0",
+-    "RequestMappingsPanelOrder1": "1",
+-    "RequestMappingsPanelWidth0": "75",
+-    "RequestMappingsPanelWidth1": "75",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "jdk.selected.JAVA_MODULE": "17",
+-    "last_opened_file_path": "E:/Documents/JAVA/SPRING_BOOT/Stamp-Enterprise-Management-System/backend/src/main/resources",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Artifacts",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.2",
+-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+-    "spring.configuration.checksum": "b43fdd98b1fd705ae4c3a10cf25aad8a",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
++    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
++    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
++    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
++    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
++    &quot;last_opened_file_path&quot;: &quot;E:/Documents/JAVA/SPRING_BOOT/Stamp-Enterprise-Management-System/backend/src/main/resources&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
++    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
++      <recent name="com.icheck.backend.DAO" />
+       <recent name="com.icheck.backend.request." />
+       <recent name="com.icheck.backend.response" />
+     </key>
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="E:\Documents\JAVA\SPRING_BOOT\Stamp-Enterprise-Management-System\backend\src\main\resources" />
++    </key>
+     <key name="CopyClassDialog.RECENTS_KEY">
+       <recent name="com.icheck.backend.util" />
+     </key>
+@@ -171,7 +145,9 @@
+       <workItem from="1664245299765" duration="17086000" />
+       <workItem from="1664330564757" duration="17994000" />
+       <workItem from="1664417298141" duration="6457000" />
+-      <workItem from="1664510714485" duration="3978000" />
++      <workItem from="1664510714485" duration="6502000" />
++      <workItem from="1664804452184" duration="1218000" />
++      <workItem from="1664849771588" duration="9828000" />
+     </task>
+     <servers />
+   </component>
+Index: backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.repositority;\r\n\r\nimport com.icheck.backend.request.PackRequest;\r\nimport com.icheck.backend.response.PacksResponse;\r\nimport org.springframework.stereotype.Component;\r\nimport org.springframework.stereotype.Repository;\r\nimport org.springframework.web.bind.annotation.RequestBody;\r\n\r\n@Repository\r\npublic interface PackRepoCustom {\r\n    public PacksResponse search(PackRequest request);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java b/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java
+--- a/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java	(date 1664850969155)
+@@ -8,5 +8,5 @@
+ 
+ @Repository
+ public interface PackRepoCustom {
+-    public PacksResponse search(PackRequest request);
++    public PacksResponse search(String code, String name, int status);
+ }
+Index: backend/src/main/java/com/icheck/backend/DAO/PackDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/DAO/PackDao.java b/backend/src/main/java/com/icheck/backend/DAO/PackDao.java
+new file mode 100644
+--- /dev/null	(date 1664853079891)
++++ b/backend/src/main/java/com/icheck/backend/DAO/PackDao.java	(date 1664853079891)
+@@ -0,0 +1,19 @@
++package com.icheck.backend.DAO;
++
++import com.icheck.backend.entity.Pack;
++import com.icheck.backend.repositority.PackRepo;
++import com.icheck.backend.response.PackResponse;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
++import org.springframework.stereotype.Repository;
++import org.springframework.stereotype.Service;
++
++@Component
++public class PackDao {
++    @Autowired
++    private PackRepo repo;
++
++    public Pack getById(Long id){
++        return repo.findById(id).get();
++    }
++}
+Index: backend/src/main/java/com/icheck/backend/security/MyUser.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/security/MyUser.java b/backend/src/main/java/com/icheck/backend/security/MyUser.java
+new file mode 100644
+--- /dev/null	(date 1664869936500)
++++ b/backend/src/main/java/com/icheck/backend/security/MyUser.java	(date 1664869936500)
+@@ -0,0 +1,24 @@
++package com.icheck.backend.security;
++
++import lombok.AllArgsConstructor;
++import lombok.Data;
++import lombok.NoArgsConstructor;
++import org.springframework.security.core.GrantedAuthority;
++import org.springframework.security.core.userdetails.User;
++
++import java.util.Collection;
++
++public class MyUser extends User {
++    private Long userId;
++    public MyUser(String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
++        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
++    }
++
++    public void setUserId(Long userId) {
++        this.userId = userId;
++    }
++
++    public Long getUserId() {
++        return userId;
++    }
++}
+Index: backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.repositority.impl;\r\n\r\nimport com.icheck.backend.controller.UserController;\r\nimport com.icheck.backend.converter.UserConverter;\r\nimport com.icheck.backend.entity.Pack;\r\nimport com.icheck.backend.entity.User;\r\nimport com.icheck.backend.repositority.UserRepoCustom;\r\nimport com.icheck.backend.request.UserRequest;\r\nimport com.icheck.backend.response.UserResponse;\r\nimport com.icheck.backend.response.UsersResponse;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Component;\r\nimport org.springframework.stereotype.Repository;\r\n\r\nimport javax.persistence.EntityManager;\r\nimport javax.persistence.PersistenceContext;\r\nimport javax.persistence.Query;\r\nimport java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\n@Component\r\npublic class UserRepoCustomImpl implements UserRepoCustom {\r\n    @PersistenceContext\r\n    private EntityManager entityManager;\r\n    @Autowired\r\n    private UserConverter converter;\r\n    @Override\r\n    public UsersResponse search(UserRequest request){\r\n        StringBuilder sql = new StringBuilder();\r\n        Map<String, Object> params = new HashMap<>();\r\n\r\n        sql.append(\"from User u where (u.name LIKE :name) \" +\r\n                    \"and (u.phone LIKE :phone) \" +\r\n                \"and (u.email LIKE :email) \" +\r\n                \"and (u.taxCode LIKE :taxCode) \" +\r\n                \"and (u.city LIKE :city) \" +\r\n                \"and (u.district LIKE :district) \" +\r\n                \"and (u.address LIKE :address) \");\r\n\r\n        params.put(\"name\", \"%\"+request.getName()+\"%\");\r\n        params.put(\"phone\", \"%\"+request.getPhone()+\"%\");\r\n        params.put(\"email\", \"%\"+request.getEmail()+\"%\");\r\n        params.put(\"taxCode\", \"%\"+request.getTaxCode()+\"%\");\r\n        params.put(\"city\", \"%\"+request.getCity()+\"%\");\r\n        params.put(\"district\", \"%\"+request.getDistrict()+\"%\");\r\n        params.put(\"address\", \"%\"+request.getAddress()+\"%\");\r\n\r\n        if(request.getStatus() != -1){\r\n            sql.append(\"and u.status LIKE :status\");\r\n            params.put(\"status\", request.getStatus());\r\n        }\r\n        Query query = entityManager.createQuery(sql.toString());\r\n        params.forEach(query::setParameter);\r\n\r\n        List<User> users =  query.getResultList();\r\n        UsersResponse usersResponse = new UsersResponse();\r\n\r\n        for (User item:users) {\r\n            usersResponse.getUserResponseList().add(converter.toResponse(item));\r\n        }\r\n        return usersResponse;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java b/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java
+--- a/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java	(date 1664854157156)
+@@ -18,14 +18,14 @@
+ import java.util.HashMap;
+ import java.util.List;
+ import java.util.Map;
+-@Component
++@Component("userRepoCustom")
+ public class UserRepoCustomImpl implements UserRepoCustom {
+     @PersistenceContext
+     private EntityManager entityManager;
+     @Autowired
+     private UserConverter converter;
+     @Override
+-    public UsersResponse search(UserRequest request){
++    public UsersResponse search(String name, String email, String phone, String taxCode, String city, String district,String address, int status){
+         StringBuilder sql = new StringBuilder();
+         Map<String, Object> params = new HashMap<>();
+ 
+@@ -37,17 +37,17 @@
+                 "and (u.district LIKE :district) " +
+                 "and (u.address LIKE :address) ");
+ 
+-        params.put("name", "%"+request.getName()+"%");
+-        params.put("phone", "%"+request.getPhone()+"%");
+-        params.put("email", "%"+request.getEmail()+"%");
+-        params.put("taxCode", "%"+request.getTaxCode()+"%");
+-        params.put("city", "%"+request.getCity()+"%");
+-        params.put("district", "%"+request.getDistrict()+"%");
+-        params.put("address", "%"+request.getAddress()+"%");
++        params.put("name", "%"+name+"%");
++        params.put("phone", "%"+phone+"%");
++        params.put("email", "%"+email+"%");
++        params.put("taxCode", "%"+taxCode+"%");
++        params.put("city", "%"+city+"%");
++        params.put("district", "%"+district+"%");
++        params.put("address", "%"+address+"%");
+ 
+-        if(request.getStatus() != -1){
++        if(status != -1){
+             sql.append("and u.status LIKE :status");
+-            params.put("status", request.getStatus());
++            params.put("status", status);
+         }
+         Query query = entityManager.createQuery(sql.toString());
+         params.forEach(query::setParameter);
+Index: backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.repositority;\r\n\r\nimport com.icheck.backend.request.UserRequest;\r\nimport com.icheck.backend.response.UsersResponse;\r\nimport org.springframework.stereotype.Component;\r\nimport org.springframework.stereotype.Repository;\r\n\r\n@Repository\r\npublic interface UserRepoCustom {\r\n    public UsersResponse search(UserRequest request);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java b/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java
+--- a/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java	(date 1664851395264)
+@@ -7,5 +7,5 @@
+ 
+ @Repository
+ public interface UserRepoCustom {
+-    public UsersResponse search(UserRequest request);
++    public UsersResponse search(String name, String email, String phone, String taxCode, String city, String district,String address, int status);
+ }
+Index: backend/src/main/java/com/icheck/backend/service/UserService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.icheck.backend.service;\r\n\r\nimport com.icheck.backend.converter.UserConverter;\r\nimport com.icheck.backend.entity.User;\r\nimport com.icheck.backend.repositority.UserRepo;\r\nimport com.icheck.backend.repositority.UserRepoCustom;\r\nimport com.icheck.backend.request.UserRequest;\r\nimport com.icheck.backend.response.UserResponse;\r\nimport com.icheck.backend.response.UsersResponse;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.sql.SQLException;\r\n\r\n@Service\r\npublic class UserService {\r\n    @Autowired\r\n    private UserConverter converter;\r\n    @Autowired\r\n    private  UserRepoCustom repoCustom;\r\n    @Autowired\r\n    private UserRepo repo;\r\n\r\n    public UserResponse save(UserRequest userRequest) {\r\n        User user = converter.toEntity(userRequest);\r\n        try {\r\n            repo.save(user);\r\n            UserResponse userResponse = converter.toResponse(user);\r\n            return userResponse;\r\n        }catch(Exception e){\r\n            e.getStackTrace();\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public User getById(Long id) {\r\n        return repo.findById(id).get();\r\n    }\r\n\r\n    public UserResponse delete(User user) {\r\n        try{\r\n            repo.delete(user);\r\n            return converter.toResponse(user);\r\n        }catch(Exception e){\r\n            e.getStackTrace();\r\n            return null;\r\n        }\r\n    }\r\n\r\n    public UsersResponse search(UserRequest request) {\r\n        return repoCustom.search(request);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/backend/src/main/java/com/icheck/backend/service/UserService.java b/backend/src/main/java/com/icheck/backend/service/UserService.java
+--- a/backend/src/main/java/com/icheck/backend/service/UserService.java	(revision 381a9060955cdc188d649336bbd61497a33997e5)
++++ b/backend/src/main/java/com/icheck/backend/service/UserService.java	(date 1664854218740)
+@@ -8,6 +8,7 @@
+ import com.icheck.backend.response.UserResponse;
+ import com.icheck.backend.response.UsersResponse;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.beans.factory.annotation.Qualifier;
+ import org.springframework.stereotype.Service;
+ 
+ import java.sql.SQLException;
+@@ -16,6 +17,7 @@
+ public class UserService {
+     @Autowired
+     private UserConverter converter;
++    @Qualifier("userRepoCustom")
+     @Autowired
+     private  UserRepoCustom repoCustom;
+     @Autowired
+@@ -33,8 +35,8 @@
+         }
+     }
+ 
+-    public User getById(Long id) {
+-        return repo.findById(id).get();
++    public UserResponse getById(Long id) {
++        return converter.toResponse(repo.findById(id).get());
+     }
+ 
+     public UserResponse delete(User user) {
+@@ -47,7 +49,7 @@
+         }
+     }
+ 
+-    public UsersResponse search(UserRequest request) {
+-        return repoCustom.search(request);
++    public UsersResponse search(String name, String email, String phone, String taxCode, String city, String district,String address, int status) {
++        return repoCustom.search(name, email, phone, taxCode, city, district,address, status);
+     }
+ }

@@ -15,25 +15,24 @@ import javax.persistence.Query;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@Component
+@Component("packRepoCustom")
 public class PackRepoCustomImpl implements PackRepoCustom {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
     private PackConverter packConverter;
     @Override
-    public PacksResponse search(PackRequest request) {
-        System.out.println(request);
+    public PacksResponse search(String code, String name, int status) {
         PacksResponse packsResponse = new PacksResponse();
         StringBuilder sql = new StringBuilder();
         Map<String, Object> params = new HashMap<>();
         sql.append("select * from pack p where p.code LIKE :code and p.name LIKE :name ");
-        params.put("code", "%"+request.getCode()+"%");
-        params.put("name", "%"+request.getName()+"%");
+        params.put("code", "%"+code+"%");
+        params.put("name", "%"+name+"%");
 
-        if (request.getStatus() != -1){
+        if (status != -1){
             sql.append("and status = :status");
-            params.put("status", request.getStatus());
+            params.put("status", status);
         }
         Query query = entityManager.createNativeQuery(sql.toString(), Pack.class);
         params.forEach(query::setParameter);
