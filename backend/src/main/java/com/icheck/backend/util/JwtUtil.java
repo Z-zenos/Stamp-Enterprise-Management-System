@@ -18,6 +18,7 @@ public class JwtUtil {
     // Tạo một JWT token dựa trên userDetails
     public String generateToken(UserDetails userDetails){
         Map<String, Object> claims = new HashMap<>();
+//        claims.put("userId", "")
         return createToken(claims, userDetails.getUsername());
     }
 

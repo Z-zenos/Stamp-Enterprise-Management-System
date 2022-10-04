@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,9 +31,8 @@ public class AuthenticateController {
     public ResponseEntity<?> createAuthenticate(@RequestBody AuthenticateRequest authenticateRequest) throws Exception{
         System.out.println(authenticateRequest);
         try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticateRequest.getUsername(),
-                                                            authenticateRequest.getPassword()));
+        	Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticateRequest.getUsername(), authenticateRequest.getPassword()));
+//        	Từ authentication => get ra được đối tượng user detail mà đã load từ DB => Get được id, username, => Nhét id và username vào claim => gen ra token
         }catch(BadCredentialsException e){
             throw new Exception("Incorrect username or password", e);
         }

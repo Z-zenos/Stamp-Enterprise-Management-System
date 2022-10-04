@@ -26,8 +26,12 @@ public class JwtRequestFilter  extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        final String authorizationHeader = request.getHeader("Authorization");
+        
+    	final String authorizationHeader = request.getHeader("Authorization");
 
+    	// Lấy ra JWT token, parse token lấy ra userId, username và các thông tin cần thiết mà trước đó lúc gen token đã put data vào token
+    	// Nếu parse được username, user id => tạo ra UsernamePasswordAuthenticationToken và nhét vào context
+    	
         String username = null;
         String jwt = null;
 
@@ -39,8 +43,7 @@ public class JwtRequestFilter  extends OncePerRequestFilter {
             UserDetails userDetails = this.userDetailService.loadUserByUsername(username);
             if (jwtUtil.validateToken(jwt, userDetails)){
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                usernamePasswordAuthenticationToken
-                        .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
