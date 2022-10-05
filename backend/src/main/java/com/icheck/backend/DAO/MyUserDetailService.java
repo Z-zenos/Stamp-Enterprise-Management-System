@@ -1,0 +1,32 @@
+package com.icheck.backend.DAO;
+
+import com.icheck.backend.converter.AdminConverter;
+import com.icheck.backend.entity.Admin;
+import com.icheck.backend.repositority.AdminRepositority;
+import com.icheck.backend.security.AdminAccount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyUserDetailService implements UserDetailsService {
+	
+	// Khai báo userService
+    @Autowired
+    private AdminRepositority repo;
+    @Autowired
+    private AdminConverter converter;
+    @Override
+    public AdminAccount loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        Admin admin = repo.findByUserName(username);
+
+        AdminAccount adminAccount = converter.toAdminAccount(admin);
+
+        if (adminAccount == null) {
+            throw new UsernameNotFoundException("Không tìm thấy trong db");
+        }
+        return adminAccount;
+    }
+}

@@ -1,5 +1,6 @@
 package com.icheck.backend.util;
 
+import com.icheck.backend.security.AdminAccount;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -16,10 +17,11 @@ public class JwtUtil {
     private String SECRET_KEY = "linh1234";
     private final int HOURS = 10;
     // Tạo một JWT token dựa trên userDetails
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(AdminAccount adminAccount){
         Map<String, Object> claims = new HashMap<>();
-//        claims.put("userId", "")
-        return createToken(claims, userDetails.getUsername());
+
+        claims.put("id", adminAccount.getId());
+        return createToken(claims, adminAccount.getUsername());
     }
 
     private String createToken(Map<String, Object> claims, String subject) {

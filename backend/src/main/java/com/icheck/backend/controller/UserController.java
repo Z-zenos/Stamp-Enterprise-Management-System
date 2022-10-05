@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping
 public class UserController {
     @Autowired
@@ -39,6 +39,7 @@ public class UserController {
         UserResponse rsp = service.save(request);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/users")
     public ResponseEntity<UsersResponse> search(@RequestParam(name = "name", defaultValue = "", required = false) String name,
                                                 @RequestParam(name = "email", required = false, defaultValue = "") String email,

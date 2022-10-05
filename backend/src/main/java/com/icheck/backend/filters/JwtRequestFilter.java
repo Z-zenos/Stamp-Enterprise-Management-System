@@ -1,9 +1,8 @@
 package com.icheck.backend.filters;
 
-import com.icheck.backend.security.MyUserDetailService;
+import com.icheck.backend.DAO.MyUserDetailService;
 import com.icheck.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,7 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.Security;
+
 @Component
 public class JwtRequestFilter  extends OncePerRequestFilter {
     @Autowired
