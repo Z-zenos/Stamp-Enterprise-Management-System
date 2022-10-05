@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping
 public class UserController {
+	// TODO: 
+	/*
+	 * 1. Lưu password dạng mã hóa sử dụng passwordEncoder. 
+	 * 2. Check trùng với những  trường unique.
+	 * 3. Với mỗi API tạo riêng Request, Response.
+	 * 4. tạo 1 class BaseResponse<T> (int code, string message, T data)
+	 * 5. Custom bắt tất cả các exception nếu bắn ra thì trả về dạng BaseResponse với code lỗi và message =>>> @RestControllerAdvice
+	 */
+	
     @Autowired
     private UserService service;
     @Autowired

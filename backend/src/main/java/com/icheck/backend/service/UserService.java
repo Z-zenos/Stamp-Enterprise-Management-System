@@ -24,6 +24,7 @@ public class UserService {
     private UserRepo repo;
 
     public UserResponse save(UserRequest userRequest) {
+    	//TOTDO: kiểm tra nếu tồn tại username hoặc email thì bắn exception
         User user = converter.toEntity(userRequest);
         try {
             repo.save(user);
