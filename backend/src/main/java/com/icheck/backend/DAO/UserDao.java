@@ -2,7 +2,6 @@ package com.icheck.backend.DAO;
 
 import com.icheck.backend.entity.User;
 import com.icheck.backend.repositority.UserRepo;
-import com.icheck.backend.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

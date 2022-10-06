@@ -1,16 +1,12 @@
 package com.icheck.backend.repositority.impl;
 
-import com.icheck.backend.controller.UserController;
-import com.icheck.backend.converter.UserConverter;
-import com.icheck.backend.entity.Pack;
+import com.icheck.backend.converter.BaseConverter;
 import com.icheck.backend.entity.User;
 import com.icheck.backend.repositority.UserRepoCustom;
-import com.icheck.backend.request.UserRequest;
-import com.icheck.backend.response.UserResponse;
-import com.icheck.backend.response.UsersResponse;
+import com.icheck.backend.response.user_response.UserResponse;
+import com.icheck.backend.response.user_response.UsersResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,7 +19,7 @@ public class UserRepoCustomImpl implements UserRepoCustom {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
-    private UserConverter converter;
+    private BaseConverter converter;
     @Override
     public UsersResponse search(String name, String email, String phone, String taxCode, String city, String district,String address, int status){
         StringBuilder sql = new StringBuilder();
@@ -56,7 +52,7 @@ public class UserRepoCustomImpl implements UserRepoCustom {
         UsersResponse usersResponse = new UsersResponse();
 
         for (User item:users) {
-            usersResponse.getUserResponseList().add(converter.toResponse(item));
+            usersResponse.getUserResponseList().add(converter.toResponse(item, UserResponse.class));
         }
         return usersResponse;
     }

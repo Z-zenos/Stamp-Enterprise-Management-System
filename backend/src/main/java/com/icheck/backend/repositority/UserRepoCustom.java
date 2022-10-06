@@ -1,8 +1,6 @@
 package com.icheck.backend.repositority;
 
-import com.icheck.backend.request.UserRequest;
-import com.icheck.backend.response.UsersResponse;
-import org.springframework.stereotype.Component;
+import com.icheck.backend.response.user_response.UsersResponse;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,9 +1,8 @@
 package com.icheck.backend.controller;
 
 import com.icheck.backend.converter.AdminConverter;
-import com.icheck.backend.entity.Admin;
-import com.icheck.backend.request.AuthenticateRequest;
-import com.icheck.backend.response.AuthenticateResponse;
+import com.icheck.backend.request.authen_request.AuthenticateRequest;
+import com.icheck.backend.response.authen_response.AuthenticateResponse;
 import com.icheck.backend.security.AdminAccount;
 import com.icheck.backend.DAO.AdminService;
 import com.icheck.backend.util.JwtUtil;

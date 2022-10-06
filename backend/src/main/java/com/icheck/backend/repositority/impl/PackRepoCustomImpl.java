@@ -1,11 +1,10 @@
 package com.icheck.backend.repositority.impl;
 
-import com.icheck.backend.converter.PackConverter;
+import com.icheck.backend.converter.BaseConverter;
 import com.icheck.backend.entity.Pack;
-import com.icheck.backend.repositority.PackRepo;
 import com.icheck.backend.repositority.PackRepoCustom;
-import com.icheck.backend.request.PackRequest;
-import com.icheck.backend.response.PacksResponse;
+import com.icheck.backend.response.pack_response.PackResponse;
+import com.icheck.backend.response.pack_response.PacksResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ public class PackRepoCustomImpl implements PackRepoCustom {
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
-    private PackConverter packConverter;
+    private BaseConverter converter;
     @Override
     public PacksResponse search(String code, String name, int status) {
         PacksResponse packsResponse = new PacksResponse();
@@ -38,7 +37,7 @@ public class PackRepoCustomImpl implements PackRepoCustom {
         params.forEach(query::setParameter);
         List<Pack> packList =  query.getResultList();
         for (Pack pack:packList) {
-            packsResponse.getPackList().add(packConverter.toResponse(pack));
+           packsResponse.getPackList().add(converter.toResponse(pack, PackResponse.class));
         }
         return packsResponse;
     }

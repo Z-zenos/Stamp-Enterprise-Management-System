@@ -22,7 +22,7 @@ public class User {
     @Column(length = 50)
     private String name;
 
-    @Column(length = 11)
+    @Column(length = 15)
     private String phone;
 
     @Column(length = 100)
@@ -48,9 +48,9 @@ public class User {
 
     @CreationTimestamp
     @Column(updatable = false)
-    private LocalDateTime created_at;
+    private LocalDateTime createAt;
 
     @Column
     @UpdateTimestamp
-    private LocalDateTime update_at;
+    private LocalDateTime updateAt;
 }

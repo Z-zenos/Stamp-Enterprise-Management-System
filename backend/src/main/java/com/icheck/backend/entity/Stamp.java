@@ -30,6 +30,7 @@ public class Stamp {
 
     @Column
     private int status;
+    //0. pending, 1 = active, 2. block, 3. non-block
 
     @Column
     private int deleted;

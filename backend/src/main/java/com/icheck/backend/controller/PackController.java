@@ -1,9 +1,10 @@
 package com.icheck.backend.controller;
 
 import com.icheck.backend.entity.Pack;
-import com.icheck.backend.request.PackRequest;
-import com.icheck.backend.response.PackResponse;
-import com.icheck.backend.response.PacksResponse;
+import com.icheck.backend.request.pack_request.AddPackRequest;
+import com.icheck.backend.request.pack_request.PackRequest;
+import com.icheck.backend.request.pack_request.UpdatePackRequest;
+import com.icheck.backend.response.pack_response.*;
 import com.icheck.backend.DAO.PackDao;
 import com.icheck.backend.service.PackService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +22,21 @@ public class PackController {
     private PackDao dao;
 
     @PostMapping("/package")
-    public ResponseEntity<PackResponse> add(@RequestBody PackRequest packRequest){
-        PackResponse rsp = packService.save(packRequest);
+    public ResponseEntity<AddPackResponse> add(@RequestBody AddPackRequest request){
+        AddPackResponse rsp = packService.add(request);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
     @PutMapping("/package/{id}")
-    public ResponseEntity<PackResponse> update(@PathVariable("id") Long id,
-                                               @RequestBody PackRequest packRequest){
-        packRequest.setId(id);
-        PackResponse rsp = packService.save(packRequest);
+    public ResponseEntity<UpdatePackResponse> update(@PathVariable("id") Long id,
+                                               @RequestBody UpdatePackRequest request){
+        request.setId(id);
+        UpdatePackResponse rsp = packService.update(request);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
 
     }
     @DeleteMapping("package/{id}")
-    public ResponseEntity<PackResponse> delete(@PathVariable("id") Long id){
-        Pack pack = dao.getById(id);
-        PackResponse rsp = packService.delete(pack);
+    public ResponseEntity<DeletePackResponse> delete(@PathVariable("id") Long id){
+        DeletePackResponse rsp = packService.delete(id);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
     @GetMapping("/packages")

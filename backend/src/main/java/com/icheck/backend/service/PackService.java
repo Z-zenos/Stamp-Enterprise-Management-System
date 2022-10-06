@@ -1,58 +1,83 @@
 package com.icheck.backend.service;
 
-import com.icheck.backend.converter.PackConverter;
+import com.icheck.backend.DAO.PackDao;
+import com.icheck.backend.converter.BaseConverter;
 import com.icheck.backend.entity.Pack;
 import com.icheck.backend.repositority.PackRepo;
 import com.icheck.backend.repositority.PackRepoCustom;
-import com.icheck.backend.request.PackRequest;
-import com.icheck.backend.response.PackResponse;
-import com.icheck.backend.response.PacksResponse;
+import com.icheck.backend.request.pack_request.AddPackRequest;
+import com.icheck.backend.request.pack_request.UpdatePackRequest;
+import com.icheck.backend.response.pack_response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PackService {
     @Autowired
-    private PackRepo packRepo;
+    private PackRepo repo;
+    @Autowired
+    private PackDao dao;
     @Qualifier("packRepoCustom")
     @Autowired
-    private PackRepoCustom packRepoCustom;
-    @Autowired
-    private PackConverter packConverter;
+    private PackRepoCustom repoCustom;
 
-    public PackResponse delete(Pack pack) {
+    @Autowired
+    BaseConverter converter;
+
+
+    public DeletePackResponse delete(Long id) {
+        Pack pack = dao.getById(id);
         try {
-            packRepo.delete(pack);
-            return packConverter.toResponse(pack);
+            repo.delete(pack);
         }catch(Exception e){
-            e.getStackTrace();
+            if (pack == null){
+                System.out.println("Khong tim thay package");
+            }else e.getStackTrace();
             return null;
         }
+        return converter.toResponse(pack, DeletePackResponse.class);
     }
 
     public PackResponse getById(Long id) {
-        return packConverter.toResponse(packRepo.findById(id).get());
+        return converter.toResponse(repo.findById(id).get(), PackResponse.class);
     }
 
-    public PackResponse save(PackRequest packRequest) {
-        Pack pack = packConverter.toEntity(packRequest);
-        try{
-            packRepo.save(pack);
-            return packConverter.toResponse(pack);
-        }catch(Exception e){
-            e.getStackTrace();
-            return null;
-        }
-    }
 
     public PacksResponse search(String code, String name, int status) {
-        return packRepoCustom.search(code, name, status);
+        return repoCustom.search(code, name, status);
     }
+
+    public AddPackResponse add(AddPackRequest request) {
+        Pack pack = converter.toEntity(request, Pack.class);
+        if (repo.findByCode(pack.getCode()) != null){
+            System.out.println("Package Code da ton tai");
+        }
+        pack.setStatus(1);
+        try {
+            repo.save(pack);
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+        return converter.toResponse(pack, AddPackResponse.class);
+    }
+    public UpdatePackResponse update(UpdatePackRequest request) {
+        Pack packUpdated = converter.toEntity(request, Pack.class);
+        Pack pack = repo.findById(request.getId()).get();
+        if (pack != null){
+            System.out.println("Package khong ton tai");
+            return null;
+        }else
+        if (repo.findByCode(pack.getCode()) != null && pack.getCode() != packUpdated.getCode()){
+            System.out.println("Package Code da ton tai");
+            return null;
+        }
+        try {
+            repo.save(packUpdated);
+        }catch (Exception e){
+            e.getStackTrace();
+        }
+        return converter.toResponse(packUpdated, UpdatePackResponse.class);
+    }
+
 }

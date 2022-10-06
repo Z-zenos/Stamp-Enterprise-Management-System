@@ -2,9 +2,10 @@ package com.icheck.backend.controller;
 
 import com.icheck.backend.DAO.UserDao;
 import com.icheck.backend.entity.User;
-import com.icheck.backend.request.UserRequest;
-import com.icheck.backend.response.UserResponse;
-import com.icheck.backend.response.UsersResponse;
+import com.icheck.backend.request.user_request.AddUserRequest;
+import com.icheck.backend.request.user_request.UpdateUserRequest;
+import com.icheck.backend.request.user_request.UserRequest;
+import com.icheck.backend.response.user_response.*;
 import com.icheck.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 	// TODO: 
 	/*
-	 * 1. Lưu password dạng mã hóa sử dụng passwordEncoder. 
-	 * 2. Check trùng với những  trường unique.
-	 * 3. Với mỗi API tạo riêng Request, Response.
+	 * 1. Lưu password dạng mã hóa sử dụng passwordEncoder. v
+	 * 2. Check trùng với những  trường unique.v
+	 * 3. Với mỗi API tạo riêng Request, Response.v
 	 * 4. tạo 1 class BaseResponse<T> (int code, string message, T data)
 	 * 5. Custom bắt tất cả các exception nếu bắn ra thì trả về dạng BaseResponse với code lỗi và message =>>> @RestControllerAdvice
 	 */
@@ -30,22 +31,20 @@ public class UserController {
     private UserDao dao;
 
     @PostMapping("/user")
-    public ResponseEntity<UserResponse> add(@RequestBody  UserRequest userRequest){
-        userRequest.setStatus(1);
-        UserResponse userResponse = service.save(userRequest);
-        return new ResponseEntity<>(userResponse, HttpStatus.OK);
+    public ResponseEntity<AddUserResponse> add(@RequestBody AddUserRequest request){
+        AddUserResponse rsp = service.add(request);
+        return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
     @DeleteMapping("/user/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable("id") Long id){
-        User user = dao.getById(id);
-        UserResponse userResponse = service.delete(user);
-        return new ResponseEntity<>(userResponse, HttpStatus.OK);
+    public ResponseEntity<DeleteUserResponse> delete(@PathVariable("id") Long id){
+        DeleteUserResponse rsp = service.delete(id);
+        return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
     @PutMapping("/user/{id}")
-    public ResponseEntity<UserResponse> update(@PathVariable("id") Long id,
-                                               @RequestBody UserRequest request){
+    public ResponseEntity<UpdateUserResponse> update(@PathVariable("id") Long id,
+                                                     @RequestBody UpdateUserRequest request){
         request.setId(id);
-        UserResponse rsp = service.save(request);
+        UpdateUserResponse rsp = service.update(request);
         return new ResponseEntity<>(rsp, HttpStatus.OK);
     }
     @CrossOrigin(origins = "*")

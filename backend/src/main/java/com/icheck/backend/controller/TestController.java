@@ -1,7 +1,6 @@
 package com.icheck.backend.controller;
 
-import com.icheck.backend.entity.User;
-import com.icheck.backend.response.UsersResponse;
+import com.icheck.backend.response.user_response.UsersResponse;
 import com.icheck.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
