@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Stamp-Enterprise-Management-System:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/StampController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/BaseConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/pack_request/AddPackRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/pack_request/UpdatePackRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/user_request/AddUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/user_request/UpdateUserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/pack_response/AddPackResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/pack_response/DeletePackResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/pack_response/UpdatePackResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/user_packge_response/AddUserPackageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/user_response/AddUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/user_response/DeleteUserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/user_response/UpdateUserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/MyUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/MyUserDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/PackDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/PackDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/DAO/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/AuthenticateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/PackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserPackageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/controller/UserPackageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/PackConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/converter/UserConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/Stamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/Stamp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/PackRepoCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserPackageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserPackageRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/UserRepoCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/PackRepoCustomImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/repositority/impl/UserRepoCustomImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/AuthenticateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/authen_request/AuthenticateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/PackRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/pack_request/PackRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/UserPackageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/user_package_request/AddUserPackageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/request/user_request/UserRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/AuthenticateResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/authen_response/AuthenticateResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/PackResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/pack_response/PackResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/PacksResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/pack_response/PacksResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/user_response/UserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/UsersResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/response/user_response/UsersResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/security/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/security/SecurityConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/PackService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserPackageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserPackageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/icheck/backend/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/info.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/info.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/warn.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/warn.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2F7APiCii7ScL6OGpT1gjOWnCVg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Documents/JAVA/SPRING_BOOT/Stamp-Enterprise-Management-System/backend/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b43fdd98b1fd705ae4c3a10cf25aad8a&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.icheck.backend.converter" />
+      <recent name="com.icheck.backend.repositority" />
+      <recent name="com.icheck.backend.service" />
+      <recent name="com.icheck.backend.request." />
+      <recent name="com.icheck.backend.response" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icheck.backend.util" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BackendApplication">
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.icheck.backend.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1b9926e-4951-428e-a475-54ed4d9b6712" name="Changes" comment="" />
+      <created>1663832726809</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663832726809</updated>
+      <workItem from="1663832727969" duration="937000" />
+      <workItem from="1663836755701" duration="4538000" />
+      <workItem from="1663899977407" duration="10247000" />
+      <workItem from="1664158121657" duration="21069000" />
+      <workItem from="1664245299765" duration="17086000" />
+      <workItem from="1664330564757" duration="17994000" />
+      <workItem from="1664417298141" duration="6457000" />
+      <workItem from="1664510714485" duration="3978000" />
+      <workItem from="1664935250487" duration="26201000" />
+      <workItem from="1664979952716" duration="3358000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

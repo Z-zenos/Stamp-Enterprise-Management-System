@@ -1,0 +1,13 @@
+<ic-package-box-search></ic-package-box-search>
+<ic-button
+  [icon]="'plus'"
+  [title]="'Thêm mới'"
+  [bgColor]="'green'"
+  [margin]="'0 0 0 10px'"
+  (click)="showPackageForm()"
+>
+</ic-button>
+
+<ic-package-form [hidden]="!isVisible" (visibleEvent)="hidePackageForm($event)"></ic-package-form>
+
+<ic-package-table></ic-package-table>

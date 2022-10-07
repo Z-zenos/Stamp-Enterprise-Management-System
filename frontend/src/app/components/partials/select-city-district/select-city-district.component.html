@@ -1,0 +1,34 @@
+<div class="select" [formGroup]="form">
+
+  <nz-select
+    [(ngModel)]="citySelected"
+    (ngModelChange)="cityChange($event)"
+    [nzPlaceHolder]="'-- Tỉnh / Thành phố --'"
+    nzAllowClear
+    nzShowSearch
+    formControlName="city"
+  >
+    <nz-option
+      *ngFor="let city of cities"
+      [nzValue]="city"
+      [nzLabel]="city"
+    >
+    </nz-option>
+  </nz-select>
+
+  <nz-select
+    [(ngModel)]="districtSelected"
+    [nzPlaceHolder]="'-- Quận / Huyện --'"
+    nzAllowClear
+    nzShowSearch
+    formControlName="district"
+  >
+    <nz-option
+      *ngFor="let district of districts"
+      [nzValue]="district"
+      [nzLabel]="district"
+    >
+    </nz-option>
+  </nz-select>
+
+</div>

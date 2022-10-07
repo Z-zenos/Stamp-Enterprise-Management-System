@@ -1,0 +1,113 @@
+<div class="ic-form ic-form-ep">
+
+    <div class="ic-form__header">
+      <span class="ic-form__title">Thêm doanh nghiệp mới</span>
+      <ic-button [icon]="'close'" [bgColor]="'red'" (click)="hide()"></ic-button>
+    </div>
+
+    <div class="ic-form__main">
+      <form
+        nz-form
+        [nzAutoTips]="errors"
+        [formGroup]="enterpriseForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>
+            Tên doanh nghiệp
+          </nz-form-label>
+          <nz-form-control nzHasFeedback [nzSpan]="14"
+          >
+            <nz-input-group nzPrefixIcon="solution">
+              <input nz-input placeholder="Công ty TNHH ABC..." type="text" formControlName="name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Mã số thuế</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="audit">
+              <input nz-input placeholder="3500806643" formControlName="taxcode" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Địa chỉ</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="home">
+              <input nz-input placeholder="Số 1, Ngõ 1, Đường abc, Đống Đa, Hà Nội" formControlName="address" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Số điện thoại</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="phone">
+              <input nz-input placeholder="0123456789" formControlName="phone"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Email</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="mail">
+              <input nz-input formControlName="email" placeholder="abc@gmail.com" type="email" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Tỉnh / Thành phố</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <input nz-input placeholder="Quảng Ninh" formControlName="city" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Quận / Huyện</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <input nz-input placeholder="Quận Hoàn Kiếm" formControlName="district" >
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Mật khẩu</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback>
+            <nz-input-group nzPrefixIcon="lock">
+              <input nz-input placeholder="Abc1234@" formControlName="password" type="password" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5" nzRequired>Nhập lại mật khẩu</nz-form-label>
+          <nz-form-control [nzSpan]="14" nzHasFeedback nzDisableAutoTips [nzErrorTip]="passwordErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+              <input nz-input placeholder="Abc1234@" formControlName="confirmPassword" type="password" />
+            </nz-input-group>
+            <ng-template #passwordErrorTpl let-control>
+              <ng-container *ngIf="control['hasError']('required')">
+                Vui lòng xác nhận mật khẩu!
+              </ng-container>
+              <ng-container *ngIf="control['hasError']('matching')">
+                Mật khẩu không trùng khớp!
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+      </form>
+    </div>
+
+    <div class="ic-form__footer">
+      <ic-button [icon]="'close'" [title]="'Hủy'" [bgColor]="'red'" (click)="hide()"></ic-button>
+      <ic-button [icon]="'redo'" [title]="'Reset'" [bgColor]="'yellow'" (click)="onReset($event)"></ic-button>
+      <ic-button [icon]="'plus'" [title]="'Thêm mới'" [bgColor]="'green'" [type]="'submit'" (click)="onSubmit()"></ic-button>
+    </div>
+
+</div>

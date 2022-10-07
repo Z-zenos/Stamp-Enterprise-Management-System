@@ -1,0 +1,62 @@
+@import "src/styles";
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  background-color: $color-indigo-primary;
+
+  &__list {
+    background-color: $color-indigo-primary;
+    font-weight: 600;
+
+    li {
+      &:first-of-type {
+        margin: 0 !important;
+        height: 6.4rem;
+        background-color: $color-indigo-secondary;
+        padding: 1rem 2rem !important;
+      }
+
+      &:not(:first-of-type) {
+        border-radius: .8rem;
+        width: 90%;
+        margin: 1rem auto;
+        &:hover {
+          background: linear-gradient(88.72deg,#2f54eb 6.54%,#552feb 92.61%);
+        }
+      }
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--text {
+      width: 100%;
+      height: 100%;
+      background: center /
+      110px 30px no-repeat url("../../../../assets/images/icheck__logo--text.png");
+    }
+
+    &--img {
+      width: 100%;
+      height: 90%;
+      background: center /
+      cover no-repeat url("../../../../assets/images/icheck__logo.png");
+      border-radius: 50%;
+    }
+  }
+}
+
+::ng-deep {
+  .ant-menu-item-selected {
+    background: linear-gradient(88.72deg,#2f54eb 6.54%,#552feb 92.61%);
+    text-align: center !important;
+  }
+
+  .ant-menu.ant-menu-inline-collapsed > .ant-menu-item {
+    text-align: center;
+    padding: 0 calc(50% - 12px);
+  }
+}

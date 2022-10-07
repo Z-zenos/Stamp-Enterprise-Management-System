@@ -1,0 +1,76 @@
+@import "src/styles";
+
+.ic-form {
+  width: 70rem;
+  height: 80rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 100rem rgba($color-black, .5);
+  background-color: $color-white;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  z-index: 99;
+
+  &--pk {
+    height: 40rem;
+
+    .ic-form__main {
+      padding: 2rem 0;
+    }
+  }
+
+  &__header {
+    height: 6.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-gray;
+    padding: 1rem 2rem;
+  }
+
+  &__title {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+
+  &__main {
+    padding: 4rem 0;
+    width: 100%;
+    margin-left: 6rem;
+  }
+
+  &__footer {
+    height: 6.4rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid $color-gray;
+
+    & > * {
+      margin-right: 2rem;
+    }
+  }
+
+  &__close {
+    padding: .8rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-red-tertiary;
+      color: $color-red-secondary;
+    }
+  }
+}
+
+[nz-form] {
+  max-width: 100%;
+  text-align: center;
+}
+
+nz-form-label {
+  font-weight: 600;
+}

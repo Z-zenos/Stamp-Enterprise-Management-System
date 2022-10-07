@@ -1,0 +1,12 @@
+<ic-enterprise-box-search></ic-enterprise-box-search>
+<ic-button
+  [icon]="'plus'"
+  [title]="'Thêm mới'"
+  [bgColor]="'green'"
+  [margin]="'0 0 0 10px'"
+  (click)="showEnterpriseForm()"
+>
+</ic-button>
+
+<ic-enterprise-form [hidden]="!isVisible" (visibleEvent)="hideEnterpriseForm($event)"></ic-enterprise-form>
+<ic-enterprise-table></ic-enterprise-table>

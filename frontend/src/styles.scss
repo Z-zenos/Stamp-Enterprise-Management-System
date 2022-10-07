@@ -1,0 +1,50 @@
+
+/* ======= BASE ======= */
+
+* {
+  transition: all .2s ease;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ======= COLOR ======= */
+$color-indigo-primary: #030852;
+$color-indigo-secondary: #061178;
+$color-indigo-tertiary: #5B65EA;
+
+$color-white: #FFF;
+$color-black: #000;
+$color-gray: #CCC;
+
+$color-red-primary: #FF0033;
+$color-red-secondary: #FF0036;
+$color-red-tertiary: #FFE5E7;
+
+$color-green-primary: #5EBF8B;
+$color-green-secondary: #01ad60;
+$color-green-tertiary: #D6FCEE;
+
+//$color-blue-primary: #5EBF8B;
+$color-blue-secondary: #00b2d5;
+$color-blue-tertiary: #daf7fb;
+
+$color-yellow-secondary: #d29b00;
+$color-yellow-tertiary: #f7ffca;
+
+
+/* ======= UTILS ======= */
+.center {
+  text-align: center;
+}

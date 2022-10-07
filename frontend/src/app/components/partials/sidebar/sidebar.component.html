@@ -1,0 +1,60 @@
+<div class="sidebar">
+  <ul
+    nz-menu
+    nzMode="inline"
+    nzTheme="dark"
+    [nzInlineCollapsed]="isCollapsed"
+    class="sidebar__list"
+  >
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'iCheck' : ''"
+    >
+      <div [ngClass]="isCollapsed ? 'sidebar__logo--img' : 'sidebar__logo--text'"></div>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Doanh nghiệp' : ''"
+      [nzSelected]="route === '/enterprises'"
+    >
+      <span nz-icon nzType="solution"></span>
+      <span><a routerLink="enterprises">Doanh nghiệp</a></span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Tem' : ''"
+      [nzSelected]="route === '/stamps'"
+    >
+      <span nz-icon nzType="barcode" nzTheme="outline"></span>
+      <span><a routerLink="stamps">Tem</a></span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Gói dịch vụ' : ''"
+      [nzSelected]="route === '/packages'"
+    >
+      <span nz-icon nzType="inbox" nzTheme="outline"></span>
+      <span><a routerLink="packages">Gói dịch vụ</a></span>
+    </li>
+
+    <li
+      nz-menu-item
+      nz-tooltip=""
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Thống kê' : ''"
+      [nzSelected]="route === '/statistics'"
+    >
+      <span nz-icon nzType="pie-chart" nzTheme="outline"></span>
+      <span><a routerLink="statistics">Thống kê</a></span>
+    </li>
+
+  </ul>
+</div>

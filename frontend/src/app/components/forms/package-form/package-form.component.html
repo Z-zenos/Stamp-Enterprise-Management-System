@@ -1,0 +1,64 @@
+<div class="ic-form ic-form--pk">
+
+  <div class="ic-form__header">
+    <span class="ic-form__title">Thêm gói mới</span>
+    <ic-button [icon]="'close'" [bgColor]="'red'" (click)="hide()"></ic-button>
+  </div>
+
+  <div class="ic-form__main">
+    <form
+      nz-form
+      [nzAutoTips]="errors"
+      [formGroup]="packageForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired>
+          Tên gói
+        </nz-form-label>
+        <nz-form-control nzHasFeedback [nzSpan]="14"
+        >
+          <nz-input-group nzPrefixIcon="inbox">
+            <input nz-input placeholder="Gói limited" type="text" formControlName="name" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired>Code</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback>
+          <nz-input-group nzPrefixIcon="field-number">
+            <input nz-input placeholder="35008043" formControlName="code" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired>Số lượng</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback>
+          <nz-input-group nzPrefixIcon="gold">
+            <input nz-input placeholder="3" formControlName="quantity" type="number" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired>Giá</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback>
+          <nz-input-group nzPrefixIcon="dollar">
+            <input nz-input placeholder="99" formControlName="price" type="number"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+  </div>
+
+  <div class="ic-form__footer">
+    <ic-button [icon]="'close'" [title]="'Hủy'" [bgColor]="'red'" (click)="hide()"></ic-button>
+    <ic-button [icon]="'redo'" [title]="'Reset'" [bgColor]="'yellow'" (click)="onReset($event)"></ic-button>
+    <ic-button [icon]="'plus'" [title]="'Thêm mới'" [bgColor]="'green'" [type]="'submit'" (click)="onSubmit()"></ic-button>
+  </div>
+
+</div>

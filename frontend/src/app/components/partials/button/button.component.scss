@@ -1,0 +1,91 @@
+@import "src/styles";
+
+/* ======= BUTTON ======= */
+.btn {
+  padding: .5rem 1rem;
+  font-size: 1.4rem;
+  border: none;
+  outline: none;
+<<<<<<< HEAD
+  border-radius: .4rem;
+  cursor: pointer;
+  opacity: .9;
+  font-weight: 600;
+  transition: all .3s ease;
+=======
+<<<<<<< HEAD
+  border-radius: .4rem;
+  cursor: pointer;
+  opacity: .9;
+  font-weight: 600;
+  transition: all .3s ease;
+=======
+  border-radius: .8rem;
+  cursor: pointer;
+  opacity: .9;
+  font-weight: 600;
+>>>>>>> 8c4af7ad011904e96dbddc69e780f99e936a5ec9
+>>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &--green {
+    background-color: $color-green-tertiary;
+    color: $color-green-secondary;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+    border: 1px solid $color-green-tertiary;
+
+    &:hover {
+      border: 1px solid $color-green-secondary;
+    }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8c4af7ad011904e96dbddc69e780f99e936a5ec9
+>>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+  }
+
+  &--red {
+    background-color: $color-red-tertiary;
+    color: $color-red-secondary;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+    border: 1px solid $color-red-tertiary;
+
+    &:hover {
+      border: 1px solid $color-red-secondary;
+    }
+  }
+
+  &--yellow {
+    background-color: $color-yellow-tertiary;
+    color: $color-yellow-secondary;
+    border: 1px solid $color-yellow-tertiary;
+
+    &:hover {
+      border: 1px solid $color-yellow-secondary;
+    }
+  }
+
+  &--blue {
+    background-color: $color-blue-tertiary;
+    color: $color-blue-secondary;
+    border: 1px solid $color-blue-tertiary;
+
+    &:hover {
+      border: 1px solid $color-blue-secondary;
+    }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8c4af7ad011904e96dbddc69e780f99e936a5ec9
+>>>>>>> f80ebbfd8b2941475fa2d9cbf6ab92e4e5ba3c80
+  }
+}
