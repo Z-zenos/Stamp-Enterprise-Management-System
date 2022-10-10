@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,14 +35,16 @@ public class AuthenticateController {
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticate(@RequestBody AuthenticateRequest authenticateRequest) throws Exception{
         Authentication authenticate;
+
         try {
-        	authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticateRequest.getUsername(), authenticateRequest.getPassword()));
-//        	Từ authentication => get ra được đối tượng user detail mà đã load từ DB => Get được id, username, => Nhét id và username vào claim => gen ra token
+            authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticateRequest.getUsername(), authenticateRequest.getPassword()));
+            //Từ authentication => get ra được đối tượng user detail mà đã load từ DB => Get được id, username, => Nhét id và username vào claim => gen ra token
         }catch(BadCredentialsException e){
             throw new ApiException(ErrorMessage.INCORRECT_LOGIN);
         }
 
         String jwt = jwtTokenUntil.generateToken((AdminAccount) authenticate.getPrincipal());
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
         return ResponseEntity.ok(new AuthenticateResponse(jwt));
     }
 

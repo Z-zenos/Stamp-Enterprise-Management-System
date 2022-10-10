@@ -52,9 +52,24 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     	JwtRequestFilter jwtRequestFilter = new JwtRequestFilter(authenticationManager(), jwtUtil);
     	
-        HttpSecurity httpSercurity = http.headers().disable().cors().and().requestCache().disable().csrf().disable().authorizeRequests().and();
+        HttpSecurity httpSercurity = http.headers()
+                .disable()
+                .cors()
+                .and()
+                .requestCache()
+                .disable()
+                .csrf()
+                .disable()
+                .authorizeRequests()
+                .antMatchers("/authenticate")
+                .permitAll()
+                .and();
 
-        httpSercurity.addFilterBefore(jwtRequestFilter, BasicAuthenticationFilter.class).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling().authenticationEntryPoint(authenticationEntryPoint());
+        httpSercurity.addFilterBefore(jwtRequestFilter, BasicAuthenticationFilter.class)
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(authenticationEntryPoint());
 
         http.authorizeRequests().anyRequest().authenticated();
     	
